@@ -28,12 +28,187 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dataGridViewPrintView = new System.Windows.Forms.DataGridView();
+            this.radioButtonAllPrint = new System.Windows.Forms.RadioButton();
+            this.radioButtonMalePrint = new System.Windows.Forms.RadioButton();
+            this.radioButtonFemalePrint = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioButtonDateRangeNO = new System.Windows.Forms.RadioButton();
+            this.radioButtonDateRangeYes = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePickerPrintUP = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerPrintDOWN = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonToTextFilePrint = new System.Windows.Forms.Button();
+            this.buttonPrintPreview = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrintView)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridViewPrintView
+            // 
+            this.dataGridViewPrintView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPrintView.Location = new System.Drawing.Point(12, 101);
+            this.dataGridViewPrintView.Name = "dataGridViewPrintView";
+            this.dataGridViewPrintView.RowHeadersWidth = 51;
+            this.dataGridViewPrintView.RowTemplate.Height = 24;
+            this.dataGridViewPrintView.Size = new System.Drawing.Size(776, 341);
+            this.dataGridViewPrintView.TabIndex = 0;
+            // 
+            // radioButtonAllPrint
+            // 
+            this.radioButtonAllPrint.AutoSize = true;
+            this.radioButtonAllPrint.Location = new System.Drawing.Point(12, 19);
+            this.radioButtonAllPrint.Name = "radioButtonAllPrint";
+            this.radioButtonAllPrint.Size = new System.Drawing.Size(43, 20);
+            this.radioButtonAllPrint.TabIndex = 1;
+            this.radioButtonAllPrint.TabStop = true;
+            this.radioButtonAllPrint.Text = "All";
+            this.radioButtonAllPrint.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMalePrint
+            // 
+            this.radioButtonMalePrint.AutoSize = true;
+            this.radioButtonMalePrint.Location = new System.Drawing.Point(12, 45);
+            this.radioButtonMalePrint.Name = "radioButtonMalePrint";
+            this.radioButtonMalePrint.Size = new System.Drawing.Size(58, 20);
+            this.radioButtonMalePrint.TabIndex = 2;
+            this.radioButtonMalePrint.TabStop = true;
+            this.radioButtonMalePrint.Text = "Male";
+            this.radioButtonMalePrint.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonFemalePrint
+            // 
+            this.radioButtonFemalePrint.AutoSize = true;
+            this.radioButtonFemalePrint.Location = new System.Drawing.Point(12, 71);
+            this.radioButtonFemalePrint.Name = "radioButtonFemalePrint";
+            this.radioButtonFemalePrint.Size = new System.Drawing.Size(74, 20);
+            this.radioButtonFemalePrint.TabIndex = 3;
+            this.radioButtonFemalePrint.TabStop = true;
+            this.radioButtonFemalePrint.Text = "Female";
+            this.radioButtonFemalePrint.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(195, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(137, 16);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Use BirthDate Range:";
+            // 
+            // radioButtonDateRangeNO
+            // 
+            this.radioButtonDateRangeNO.AutoSize = true;
+            this.radioButtonDateRangeNO.Location = new System.Drawing.Point(545, 21);
+            this.radioButtonDateRangeNO.Name = "radioButtonDateRangeNO";
+            this.radioButtonDateRangeNO.Size = new System.Drawing.Size(46, 20);
+            this.radioButtonDateRangeNO.TabIndex = 5;
+            this.radioButtonDateRangeNO.TabStop = true;
+            this.radioButtonDateRangeNO.Text = "No";
+            this.radioButtonDateRangeNO.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDateRangeYes
+            // 
+            this.radioButtonDateRangeYes.AutoSize = true;
+            this.radioButtonDateRangeYes.Location = new System.Drawing.Point(338, 22);
+            this.radioButtonDateRangeYes.Name = "radioButtonDateRangeYes";
+            this.radioButtonDateRangeYes.Size = new System.Drawing.Size(52, 20);
+            this.radioButtonDateRangeYes.TabIndex = 6;
+            this.radioButtonDateRangeYes.TabStop = true;
+            this.radioButtonDateRangeYes.Text = "Yes";
+            this.radioButtonDateRangeYes.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(219, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 16);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Birthday between:";
+            // 
+            // dateTimePickerPrintUP
+            // 
+            this.dateTimePickerPrintUP.Location = new System.Drawing.Point(338, 45);
+            this.dateTimePickerPrintUP.Name = "dateTimePickerPrintUP";
+            this.dateTimePickerPrintUP.Size = new System.Drawing.Size(253, 22);
+            this.dateTimePickerPrintUP.TabIndex = 8;
+            // 
+            // dateTimePickerPrintDOWN
+            // 
+            this.dateTimePickerPrintDOWN.Location = new System.Drawing.Point(338, 77);
+            this.dateTimePickerPrintDOWN.Name = "dateTimePickerPrintDOWN";
+            this.dateTimePickerPrintDOWN.Size = new System.Drawing.Size(253, 22);
+            this.dateTimePickerPrintDOWN.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(298, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 16);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "And:";
+            // 
+            // buttonToTextFilePrint
+            // 
+            this.buttonToTextFilePrint.Location = new System.Drawing.Point(628, 31);
+            this.buttonToTextFilePrint.Name = "buttonToTextFilePrint";
+            this.buttonToTextFilePrint.Size = new System.Drawing.Size(160, 23);
+            this.buttonToTextFilePrint.TabIndex = 11;
+            this.buttonToTextFilePrint.Text = "To Text File";
+            this.buttonToTextFilePrint.UseVisualStyleBackColor = true;
+            // 
+            // buttonPrintPreview
+            // 
+            this.buttonPrintPreview.Location = new System.Drawing.Point(628, 72);
+            this.buttonPrintPreview.Name = "buttonPrintPreview";
+            this.buttonPrintPreview.Size = new System.Drawing.Size(160, 23);
+            this.buttonPrintPreview.TabIndex = 12;
+            this.buttonPrintPreview.Text = "Print Preview";
+            this.buttonPrintPreview.UseVisualStyleBackColor = true;
+            // 
+            // Print_Student
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonPrintPreview);
+            this.Controls.Add(this.buttonToTextFilePrint);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dateTimePickerPrintDOWN);
+            this.Controls.Add(this.dateTimePickerPrintUP);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.radioButtonDateRangeYes);
+            this.Controls.Add(this.radioButtonDateRangeNO);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.radioButtonFemalePrint);
+            this.Controls.Add(this.radioButtonMalePrint);
+            this.Controls.Add(this.radioButtonAllPrint);
+            this.Controls.Add(this.dataGridViewPrintView);
+            this.Name = "Print_Student";
             this.Text = "Print_Student";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrintView)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dataGridViewPrintView;
+        private System.Windows.Forms.RadioButton radioButtonAllPrint;
+        private System.Windows.Forms.RadioButton radioButtonMalePrint;
+        private System.Windows.Forms.RadioButton radioButtonFemalePrint;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton radioButtonDateRangeNO;
+        private System.Windows.Forms.RadioButton radioButtonDateRangeYes;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPrintUP;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPrintDOWN;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonToTextFilePrint;
+        private System.Windows.Forms.Button buttonPrintPreview;
     }
 }

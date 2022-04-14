@@ -140,9 +140,7 @@ namespace Student_Management_Project_week8
 
                 MessageBox.Show("Successfuly Registed!");
                 this.Close();
-                Form1 form = new Form1();
-                form.Show(this);
-                this.Hide();
+
 
             }
         }
