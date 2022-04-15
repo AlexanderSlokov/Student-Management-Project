@@ -1,4 +1,5 @@
-﻿namespace Student__Management_Project_week8
+﻿namespace Student_Management_Project_week8.Student_Management
+
 {
     partial class Print_Student
     {
@@ -41,13 +42,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.buttonToTextFilePrint = new System.Windows.Forms.Button();
             this.buttonPrintPreview = new System.Windows.Forms.Button();
+            this.buttonPrintCheck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrintView)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewPrintView
             // 
             this.dataGridViewPrintView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPrintView.Location = new System.Drawing.Point(12, 112);
+            this.dataGridViewPrintView.Location = new System.Drawing.Point(12, 147);
             this.dataGridViewPrintView.Name = "dataGridViewPrintView";
             this.dataGridViewPrintView.RowHeadersWidth = 51;
             this.dataGridViewPrintView.RowTemplate.Height = 24;
@@ -57,7 +59,7 @@
             // radioButtonAllPrint
             // 
             this.radioButtonAllPrint.AutoSize = true;
-            this.radioButtonAllPrint.Location = new System.Drawing.Point(12, 19);
+            this.radioButtonAllPrint.Location = new System.Drawing.Point(12, 63);
             this.radioButtonAllPrint.Name = "radioButtonAllPrint";
             this.radioButtonAllPrint.Size = new System.Drawing.Size(43, 20);
             this.radioButtonAllPrint.TabIndex = 1;
@@ -68,7 +70,7 @@
             // radioButtonMalePrint
             // 
             this.radioButtonMalePrint.AutoSize = true;
-            this.radioButtonMalePrint.Location = new System.Drawing.Point(12, 50);
+            this.radioButtonMalePrint.Location = new System.Drawing.Point(12, 89);
             this.radioButtonMalePrint.Name = "radioButtonMalePrint";
             this.radioButtonMalePrint.Size = new System.Drawing.Size(58, 20);
             this.radioButtonMalePrint.TabIndex = 2;
@@ -79,7 +81,7 @@
             // radioButtonFemalePrint
             // 
             this.radioButtonFemalePrint.AutoSize = true;
-            this.radioButtonFemalePrint.Location = new System.Drawing.Point(12, 76);
+            this.radioButtonFemalePrint.Location = new System.Drawing.Point(12, 115);
             this.radioButtonFemalePrint.Name = "radioButtonFemalePrint";
             this.radioButtonFemalePrint.Size = new System.Drawing.Size(74, 20);
             this.radioButtonFemalePrint.TabIndex = 3;
@@ -90,7 +92,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 9);
+            this.label1.Location = new System.Drawing.Point(67, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 16);
             this.label1.TabIndex = 4;
@@ -99,7 +101,7 @@
             // radioButtonDateRangeNO
             // 
             this.radioButtonDateRangeNO.AutoSize = true;
-            this.radioButtonDateRangeNO.Location = new System.Drawing.Point(210, 21);
+            this.radioButtonDateRangeNO.Location = new System.Drawing.Point(268, 52);
             this.radioButtonDateRangeNO.Name = "radioButtonDateRangeNO";
             this.radioButtonDateRangeNO.Size = new System.Drawing.Size(46, 20);
             this.radioButtonDateRangeNO.TabIndex = 5;
@@ -110,7 +112,7 @@
             // radioButtonDateRangeYes
             // 
             this.radioButtonDateRangeYes.AutoSize = true;
-            this.radioButtonDateRangeYes.Location = new System.Drawing.Point(210, 1);
+            this.radioButtonDateRangeYes.Location = new System.Drawing.Point(210, 52);
             this.radioButtonDateRangeYes.Name = "radioButtonDateRangeYes";
             this.radioButtonDateRangeYes.Size = new System.Drawing.Size(52, 20);
             this.radioButtonDateRangeYes.TabIndex = 6;
@@ -122,7 +124,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(91, 55);
+            this.label2.Location = new System.Drawing.Point(91, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 16);
             this.label2.TabIndex = 7;
@@ -130,14 +132,14 @@
             // 
             // dateTimePickerPrintUP
             // 
-            this.dateTimePickerPrintUP.Location = new System.Drawing.Point(210, 50);
+            this.dateTimePickerPrintUP.Location = new System.Drawing.Point(210, 76);
             this.dateTimePickerPrintUP.Name = "dateTimePickerPrintUP";
             this.dateTimePickerPrintUP.Size = new System.Drawing.Size(253, 22);
             this.dateTimePickerPrintUP.TabIndex = 8;
             // 
             // dateTimePickerPrintDOWN
             // 
-            this.dateTimePickerPrintDOWN.Location = new System.Drawing.Point(210, 82);
+            this.dateTimePickerPrintDOWN.Location = new System.Drawing.Point(210, 119);
             this.dateTimePickerPrintDOWN.Name = "dateTimePickerPrintDOWN";
             this.dateTimePickerPrintDOWN.Size = new System.Drawing.Size(253, 22);
             this.dateTimePickerPrintDOWN.TabIndex = 9;
@@ -145,7 +147,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(170, 84);
+            this.label3.Location = new System.Drawing.Point(170, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 16);
             this.label3.TabIndex = 10;
@@ -153,27 +155,38 @@
             // 
             // buttonToTextFilePrint
             // 
-            this.buttonToTextFilePrint.Location = new System.Drawing.Point(303, 0);
+            this.buttonToTextFilePrint.Location = new System.Drawing.Point(147, 26);
             this.buttonToTextFilePrint.Name = "buttonToTextFilePrint";
-            this.buttonToTextFilePrint.Size = new System.Drawing.Size(160, 23);
+            this.buttonToTextFilePrint.Size = new System.Drawing.Size(150, 23);
             this.buttonToTextFilePrint.TabIndex = 11;
             this.buttonToTextFilePrint.Text = "To Text File";
             this.buttonToTextFilePrint.UseVisualStyleBackColor = true;
             // 
             // buttonPrintPreview
             // 
-            this.buttonPrintPreview.Location = new System.Drawing.Point(303, 21);
+            this.buttonPrintPreview.Location = new System.Drawing.Point(303, 26);
             this.buttonPrintPreview.Name = "buttonPrintPreview";
             this.buttonPrintPreview.Size = new System.Drawing.Size(160, 23);
             this.buttonPrintPreview.TabIndex = 12;
             this.buttonPrintPreview.Text = "Print Preview";
             this.buttonPrintPreview.UseVisualStyleBackColor = true;
             // 
+            // buttonPrintCheck
+            // 
+            this.buttonPrintCheck.Location = new System.Drawing.Point(12, 26);
+            this.buttonPrintCheck.Name = "buttonPrintCheck";
+            this.buttonPrintCheck.Size = new System.Drawing.Size(129, 23);
+            this.buttonPrintCheck.TabIndex = 13;
+            this.buttonPrintCheck.Text = "Check";
+            this.buttonPrintCheck.UseVisualStyleBackColor = true;
+            this.buttonPrintCheck.Click += new System.EventHandler(this.buttonPrintCheck_Click);
+            // 
             // Print_Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 465);
+            this.ClientSize = new System.Drawing.Size(478, 500);
+            this.Controls.Add(this.buttonPrintCheck);
             this.Controls.Add(this.buttonPrintPreview);
             this.Controls.Add(this.buttonToTextFilePrint);
             this.Controls.Add(this.label3);
@@ -210,5 +223,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonToTextFilePrint;
         private System.Windows.Forms.Button buttonPrintPreview;
+        private System.Windows.Forms.Button buttonPrintCheck;
     }
 }

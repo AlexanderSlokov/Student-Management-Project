@@ -37,6 +37,10 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -53,10 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditRemove.cs">
+    <Compile Include="Student Management\EditRemove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditRemove.Designer.cs">
+    <Compile Include="Student Management\EditRemove.Designer.cs">
       <DependentUpon>EditRemove.cs</DependentUpon>
     </Compile>
     <Compile Include="Login management\Login Form.cs">
@@ -107,7 +111,7 @@
     <Compile Include="Student Management\UpdateStudent.Designer.cs">
       <DependentUpon>UpdateStudent.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EditRemove.resx">
+    <EmbeddedResource Include="Student Management\EditRemove.resx">
       <DependentUpon>EditRemove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login management\Login Form.resx">
@@ -166,6 +170,8 @@
     <None Include="Resources\meo capoo add new student.gif" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dbo.LoginUserInfo.sql" />
+    <Content Include="dbo.StudentInfo.sql" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
     <None Include="Resources\images.png" />
     <None Include="Resources\background-dep.jpg" />

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Student__Management_Project_week8
+namespace Student_Management_Project_week8.Student_Management
 {
     public partial class EditRemove : Form
     {

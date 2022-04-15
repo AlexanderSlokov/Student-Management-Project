@@ -1,4 +1,4 @@
-﻿namespace Student__Management_Project_week8
+﻿namespace Student_Management_Project_week8.Student_Management
 {
     partial class EditRemove
     {
@@ -55,28 +55,28 @@
             // 
             this.textBoxPhoneEditRemove.Location = new System.Drawing.Point(110, 262);
             this.textBoxPhoneEditRemove.Name = "textBoxPhoneEditRemove";
-            this.textBoxPhoneEditRemove.Size = new System.Drawing.Size(212, 22);
+            this.textBoxPhoneEditRemove.Size = new System.Drawing.Size(238, 22);
             this.textBoxPhoneEditRemove.TabIndex = 2;
             // 
             // textBoxIDEditRemove
             // 
             this.textBoxIDEditRemove.Location = new System.Drawing.Point(110, 36);
             this.textBoxIDEditRemove.Name = "textBoxIDEditRemove";
-            this.textBoxIDEditRemove.Size = new System.Drawing.Size(112, 22);
+            this.textBoxIDEditRemove.Size = new System.Drawing.Size(157, 22);
             this.textBoxIDEditRemove.TabIndex = 5;
             // 
             // textBoxFnameEditRemove
             // 
             this.textBoxFnameEditRemove.Location = new System.Drawing.Point(110, 81);
             this.textBoxFnameEditRemove.Name = "textBoxFnameEditRemove";
-            this.textBoxFnameEditRemove.Size = new System.Drawing.Size(212, 22);
+            this.textBoxFnameEditRemove.Size = new System.Drawing.Size(238, 22);
             this.textBoxFnameEditRemove.TabIndex = 6;
             // 
             // textBoxLnameEditRemove
             // 
             this.textBoxLnameEditRemove.Location = new System.Drawing.Point(110, 127);
             this.textBoxLnameEditRemove.Name = "textBoxLnameEditRemove";
-            this.textBoxLnameEditRemove.Size = new System.Drawing.Size(212, 22);
+            this.textBoxLnameEditRemove.Size = new System.Drawing.Size(238, 22);
             this.textBoxLnameEditRemove.TabIndex = 7;
             // 
             // label1
@@ -155,7 +155,7 @@
             // 
             this.dateTimePickerEditRemove.Location = new System.Drawing.Point(110, 169);
             this.dateTimePickerEditRemove.Name = "dateTimePickerEditRemove";
-            this.dateTimePickerEditRemove.Size = new System.Drawing.Size(212, 22);
+            this.dateTimePickerEditRemove.Size = new System.Drawing.Size(238, 22);
             this.dateTimePickerEditRemove.TabIndex = 16;
             // 
             // radioButtonMaleEditRemove
@@ -184,14 +184,14 @@
             // 
             this.textBoxAddssEditRemove.Location = new System.Drawing.Point(110, 310);
             this.textBoxAddssEditRemove.Name = "textBoxAddssEditRemove";
-            this.textBoxAddssEditRemove.Size = new System.Drawing.Size(212, 22);
+            this.textBoxAddssEditRemove.Size = new System.Drawing.Size(238, 22);
             this.textBoxAddssEditRemove.TabIndex = 19;
             // 
             // pictureBoxEditRemove
             // 
             this.pictureBoxEditRemove.Location = new System.Drawing.Point(113, 355);
             this.pictureBoxEditRemove.Name = "pictureBoxEditRemove";
-            this.pictureBoxEditRemove.Size = new System.Drawing.Size(209, 126);
+            this.pictureBoxEditRemove.Size = new System.Drawing.Size(235, 126);
             this.pictureBoxEditRemove.TabIndex = 20;
             this.pictureBoxEditRemove.TabStop = false;
             // 
@@ -215,7 +215,7 @@
             // 
             // buttonFindEditRemove
             // 
-            this.buttonFindEditRemove.Location = new System.Drawing.Point(247, 36);
+            this.buttonFindEditRemove.Location = new System.Drawing.Point(273, 36);
             this.buttonFindEditRemove.Name = "buttonFindEditRemove";
             this.buttonFindEditRemove.Size = new System.Drawing.Size(75, 23);
             this.buttonFindEditRemove.TabIndex = 23;
@@ -226,7 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 556);
+            this.ClientSize = new System.Drawing.Size(380, 556);
             this.Controls.Add(this.buttonFindEditRemove);
             this.Controls.Add(this.buttonEditEditRemove);
             this.Controls.Add(this.buttonRemoveEditRemove);
