@@ -36,6 +36,7 @@ namespace Student_Management_Project_week8
             this.addAStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateOrDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seeStudentListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,8 @@ namespace Student_Management_Project_week8
             this.sTUDENTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addAStudentToolStripMenuItem,
             this.updateOrDeleteToolStripMenuItem,
-            this.seeStudentListToolStripMenuItem});
+            this.seeStudentListToolStripMenuItem,
+            this.printViewToolStripMenuItem});
             this.sTUDENTToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.sTUDENTToolStripMenuItem.ForeColor = System.Drawing.Color.LightSalmon;
             this.sTUDENTToolStripMenuItem.Name = "sTUDENTToolStripMenuItem";
@@ -93,6 +95,13 @@ namespace Student_Management_Project_week8
             this.seeStudentListToolStripMenuItem.Text = "See Student List";
             this.seeStudentListToolStripMenuItem.Click += new System.EventHandler(this.seeStudentListToolStripMenuItem_Click);
             // 
+            // printViewToolStripMenuItem
+            // 
+            this.printViewToolStripMenuItem.Name = "printViewToolStripMenuItem";
+            this.printViewToolStripMenuItem.Size = new System.Drawing.Size(226, 28);
+            this.printViewToolStripMenuItem.Text = "Print View";
+            this.printViewToolStripMenuItem.Click += new System.EventHandler(this.printViewToolStripMenuItem_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -120,5 +129,6 @@ namespace Student_Management_Project_week8
         private ToolStripMenuItem addAStudentToolStripMenuItem;
         private ToolStripMenuItem updateOrDeleteToolStripMenuItem;
         private ToolStripMenuItem seeStudentListToolStripMenuItem;
+        private ToolStripMenuItem printViewToolStripMenuItem;
     }
 }

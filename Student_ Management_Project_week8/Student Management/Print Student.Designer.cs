@@ -202,6 +202,7 @@
             this.Controls.Add(this.dataGridViewPrintView);
             this.Name = "Print_Student";
             this.Text = "Print_Student";
+            this.Load += new System.EventHandler(this.Print_Student_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrintView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

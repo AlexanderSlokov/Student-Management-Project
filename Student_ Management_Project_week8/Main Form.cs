@@ -1,4 +1,5 @@
 ﻿using Student_Management_Project_week8;
+using Student_Management_Project_week8.Student_Management;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,12 @@ namespace Student_Management_Project_week8
         {
             Student_List StudentLIst = new Student_List();  
             StudentLIst.Show(this); 
+        }
+
+        private void printViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Print_Student print_Student = new Print_Student();
+            print_Student.Show(this);   
         }
     }
 }
