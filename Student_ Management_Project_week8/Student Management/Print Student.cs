@@ -85,14 +85,15 @@ namespace Student_Management_Project_week8.Student_Management
         public void fillGrid(SqlCommand command)
         {
             dataGridViewPrintView.ReadOnly = true;
-
+            dataGridViewPrintView.AllowUserToAddRows = false;
+            
+            dataGridViewPrintView.DataSource = student.getStudent(command);
+            /*
             DataGridViewImageColumn pictureColumn = new DataGridViewImageColumn();
             dataGridViewPrintView.RowTemplate.Height = 80;
-            dataGridViewPrintView.DataSource = student.getStudent(command);
-
             pictureColumn = (DataGridViewImageColumn)dataGridViewPrintView.Columns[7];
             pictureColumn.ImageLayout = DataGridViewImageCellLayout.Stretch;
-            dataGridViewPrintView.AllowUserToAddRows = false;
+            */
         }
 
 
@@ -164,7 +165,125 @@ namespace Student_Management_Project_week8.Student_Management
             dataGridViewPrintView.Columns[6].HeaderText = "Student Address";
             dataGridViewPrintView.Columns[7].HeaderText = "Student Image";
 
-        //you are here
+            DataGridViewImageColumn pictureColumn = new DataGridViewImageColumn();            
+            pictureColumn = (DataGridViewImageColumn)dataGridViewPrintView.Columns[7];
+            pictureColumn.ImageLayout = DataGridViewImageCellLayout.Stretch;
+
+            //you are here
+        }
+
+
+        private void CreateDocument(DataGridView dataGridView)
+        {
+            int NoStudent = dataGridView.Rows.Count + 1;
+
+            try
+            {
+                Microsoft.Office.Interop.Word.Application WindowWord = new Microsoft.Office.Interop.Word.Application();
+
+                //Create missing variable ofr missing value
+                object missingVar = System.Reflection.Missing.Value;
+
+                //Create a new document  
+                Microsoft.Office.Interop.Word.Document document = WindowWord.Documents.Add(ref missingVar, ref missingVar, ref missingVar, ref missingVar);
+                document.Application.Visible = true;
+                document.PageSetup.Orientation = WdOrientation.wdOrientLandscape;
+                //Add header to the doc
+                foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
+                {
+                    Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                    headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                    headerRange.Font.Size = 50;
+                    headerRange.Text = "Student List";
+                }
+
+                //add footer to the doc
+                foreach (Microsoft.Office.Interop.Word.Section WordSection in document.Sections)
+                {
+                    //get footer range and ajust detail
+                    Microsoft.Office.Interop.Word.Range FootRange = WordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    FootRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    FootRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                    FootRange.Font.Size = 20;
+                    FootRange.Text = "ĐẠI HỌC SƯ PHẠM KỸ THUẬT";
+
+                }
+
+                //Add paragraph with Heading 1 Sytle
+                Microsoft.Office.Interop.Word.Paragraph paragraph1 = document.Content.Paragraphs.Add(ref missingVar);
+                object styleHeading1 = "Heading 1";
+                paragraph1.Range.set_Style(ref styleHeading1);
+                paragraph1.Range.Text = "FACULTY: HIGH QUALITY";
+                paragraph1.Range.InsertParagraphAfter();
+
+                //Add paragraph with Heading 2 style  
+                Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missingVar);
+                object styleHeading2 = "Heading 2";
+                para1.Range.set_Style(ref styleHeading2);
+                para1.Range.Text = "CLASS: OOPPR230279E_03CLC";
+                para1.Range.InsertParagraphAfter();
+
+                Table studentTable = document.Tables.Add(paragraph1.Range, NoStudent, 8, ref missingVar, ref missingVar);
+                studentTable.Borders.Enable = 1;
+
+                foreach (Row row in studentTable.Rows)
+                {
+                    //
+                    foreach (Cell cell in row.Cells)
+                    {
+                        //Header row  
+                        if (cell.RowIndex == 1)
+                        {
+                            int index = cell.ColumnIndex;
+                            switch (index)
+                            {
+                                case 1:
+                                    cell.Range.Text = "ID";
+                                    break;
+                                case 2:
+                                    cell.Range.Text = "First Name";
+                                    break;
+                                case 3:
+                                    cell.Range.Text = "Last Name";
+                                    break;
+                                case 4:
+                                    cell.Range.Text = "Birthdate";
+                                    break;
+                                case 5:
+                                    cell.Range.Text = "Gender";
+                                    break;
+                                case 6:
+                                    cell.Range.Text = "Phone";
+                                    break;
+                                case 7:
+                                    cell.Range.Text = "Address";
+                                    break;
+                                case 8:
+                                    cell.Range.Text = "Picture";
+                                    break;
+                            }
+                            //cell.Range.Text = ((dataIndex) index).ToString();
+                            cell.Range.Font.Bold = 1;
+                            //other format properties goes here  
+                            cell.Range.Font.Name = "verdana";
+                            cell.Range.Font.Size = 8;
+                            //cell.Range.Font.ColorIndex = WdColorIndex.wdGray25;                              
+                            cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                            //Center alignment for the Header cells  
+                            cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                            cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+                            //[update]20/4 (1)
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failtal Error: " + ex.Message);
+            }
         }
     }
 }

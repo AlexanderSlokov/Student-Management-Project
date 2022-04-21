@@ -52,7 +52,7 @@
             this.dataGridViewPrintView.Location = new System.Drawing.Point(12, 147);
             this.dataGridViewPrintView.Name = "dataGridViewPrintView";
             this.dataGridViewPrintView.RowHeadersWidth = 51;
-            this.dataGridViewPrintView.RowTemplate.Height = 24;
+            this.dataGridViewPrintView.RowTemplate.Height = 80;
             this.dataGridViewPrintView.Size = new System.Drawing.Size(451, 341);
             this.dataGridViewPrintView.TabIndex = 0;
             // 
