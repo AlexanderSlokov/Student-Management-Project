@@ -53,5 +53,11 @@ namespace Student_Management_Project_week8
             Stat stat = new Stat();
             stat.Show(this);
         }
+
+        private void manageStudentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Manage_Student_Form manageStudentForm = new Manage_Student_Form();  
+            manageStudentForm.Show(this);   
+        }
     }
 }

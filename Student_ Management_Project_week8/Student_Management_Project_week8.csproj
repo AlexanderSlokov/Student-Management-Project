@@ -82,6 +82,12 @@
     <Compile Include="Login management\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Student Management\Manage Student Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student Management\Manage Student Form.Designer.cs">
+      <DependentUpon>Manage Student Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student Management\Print Student.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Student Management\Manage Student Form.resx">
+      <DependentUpon>Manage Student Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Student Management\Print Student.resx">
       <DependentUpon>Print Student.cs</DependentUpon>
     </EmbeddedResource>
