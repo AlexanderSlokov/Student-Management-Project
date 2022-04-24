@@ -161,6 +161,7 @@
             this.buttonToTextFilePrint.TabIndex = 11;
             this.buttonToTextFilePrint.Text = "To Text File";
             this.buttonToTextFilePrint.UseVisualStyleBackColor = true;
+            this.buttonToTextFilePrint.Click += new System.EventHandler(this.buttonToTextFilePrint_Click);
             // 
             // buttonPrintPreview
             // 
@@ -170,6 +171,7 @@
             this.buttonPrintPreview.TabIndex = 12;
             this.buttonPrintPreview.Text = "Print Preview";
             this.buttonPrintPreview.UseVisualStyleBackColor = true;
+            this.buttonPrintPreview.Click += new System.EventHandler(this.buttonPrintPreview_Click);
             // 
             // buttonPrintCheck
             // 

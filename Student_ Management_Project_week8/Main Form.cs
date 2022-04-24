@@ -47,5 +47,11 @@ namespace Student_Management_Project_week8
             Print_Student print_Student = new Print_Student();
             print_Student.Show(this);   
         }
+
+        private void staticToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stat stat = new Stat();
+            stat.Show(this);
+        }
     }
 }

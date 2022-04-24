@@ -203,11 +203,11 @@ namespace Student_Management_Project_week8.Student_Management
                 foreach (Microsoft.Office.Interop.Word.Section WordSection in document.Sections)
                 {
                     //get footer range and ajust detail
-                    Microsoft.Office.Interop.Word.Range FootRange = WordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
-                    FootRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                    FootRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
-                    FootRange.Font.Size = 20;
-                    FootRange.Text = "ĐẠI HỌC SƯ PHẠM KỸ THUẬT";
+                    Microsoft.Office.Interop.Word.Range footerRange = WordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                    footerRange.Font.Size = 10;
+                    footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    footerRange.Text = "TRUONG DAI HOC SPKT";
 
                 }
 
@@ -276,14 +276,121 @@ namespace Student_Management_Project_week8.Student_Management
                             cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
                             //[update]20/4 (1)
                         }
+                        else
+                        {
+                            int index = cell.ColumnIndex;
+                            switch (index)
+                            {
 
+                                case 1:
+                                    //cell.Range.Text = reader["id"].ToString();
+                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
+                                    break;
+                                case 2:
+                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
+                                    break;
+                                case 3:
+                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
+                                    break;
+                                case 4:
+                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
+                                    break;
+                                case 5:
+                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
+                                    break;
+                                case 6:
+                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
+                                    break;
+                                case 7:
+                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
+                                    break;
+                                case 8:
+                                    byte[] imgbyte = (byte[])dataGridView[index - 1, cell.RowIndex - 2].Value;
+                                    MemoryStream ms = new MemoryStream(imgbyte);
+                                    //Image sparePicture = Image.FromStream(ms);
+                                    Image finalPic = (Image)(new Bitmap(Image.FromStream(ms), new Size(50, 50)));
+                                    Clipboard.SetDataObject(finalPic);
+                                    //document = document.Content.Paragraphs.Add();
+                                    //document = document.Content.Paragraphs.Add(ref missing);
+                                    cell.Range.Paste();
+                                    cell.Range.InsertParagraphAfter();
+                                    break;
+                            }
+
+                        }
                     }
                 }
+                //Save the document  
+                object filename = @"E:\\student.docx";
+                //document.SaveAs2(ref filename);
+                //document.Close(ref missing, ref missing, ref missing);
+                //document = null;
+                //winword.Quit(ref missing, ref missing, ref missing);
+                //winword = null;
+                MessageBox.Show("Document created successfully !");
+                mydb.closeConnection();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failtal Error: " + ex.Message);
             }
+        }
+
+        public void Export_Data_To_Word(DataGridView DGV, string filename)
+        {
+            int RowCount = DGV.Rows.Count;
+            int ColumnCount = DGV.Columns.Count;
+
+            Document oDoc = new Document();
+            oDoc.Application.Visible = true;
+
+            oDoc.PageSetup.Orientation = WdOrientation.wdOrientLandscape;
+
+            //dynamic oRange = oDoc.Content.Application.Selection.Range;
+            string oTemp = "";
+            Object oMissing = System.Reflection.Missing.Value;
+            for (int r = 0; r <= RowCount - 1; r++)
+            {
+                oTemp = "";
+                for (int c = 0; c < ColumnCount - 1; c++)
+                {
+                    oTemp = oTemp + DGV.Rows[r].Cells[c].Value + "\t";
+                }
+                var oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
+                oPara1.Range.Text = oTemp;
+                oPara1.Range.InsertParagraphAfter();
+                byte[] imgbyte = (byte[])DGV.Rows[r].Cells[7].Value;
+                MemoryStream ms = new MemoryStream(imgbyte);
+                //Image sparePicture = Image.FromStream(ms);
+                Image finalPic = (Image)(new Bitmap(Image.FromStream(ms), new Size(50, 50)));
+                Clipboard.SetDataObject(finalPic);
+                var oPara2 = oDoc.Content.Paragraphs.Add(ref oMissing);
+                oPara2.Range.Paste();
+                oPara2.Range.InsertParagraphAfter();
+                //oTemp += "\n";
+            }
+
+            //save the file
+
+
+        }
+
+        private void buttonToTextFilePrint_Click(object sender, EventArgs e)
+        {
+            CreateDocument(this.dataGridViewPrintView);
+        }
+
+        private void buttonPrintPreview_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDlog = new PrintDialog();
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.DocumentName = "Printed Document";
+            printDlog.Document = printDoc;
+            printDlog.AllowSelection = true;
+            printDlog.AllowSomePages = true;
+
+            if (printDlog.ShowDialog() == DialogResult.OK)
+                printDoc.Print();
         }
     }
 }
