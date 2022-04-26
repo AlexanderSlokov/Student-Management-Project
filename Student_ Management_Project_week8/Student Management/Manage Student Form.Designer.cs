@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manage_Student_Form));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.labelTotalStudent = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,6 +56,7 @@
             this.textBoxLNAME = new System.Windows.Forms.TextBox();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.labelPictureError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManage)).BeginInit();
             this.SuspendLayout();
@@ -65,9 +67,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(368, 34);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.RowTemplate.Height = 80;
             this.dataGridView1.Size = new System.Drawing.Size(485, 437);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // labelTotalStudent
             // 
@@ -87,12 +90,12 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Search With ID:";
             // 
-            // textBox1
+            // textBoxSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(469, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(128, 22);
-            this.textBox1.TabIndex = 3;
+            this.textBoxSearch.Location = new System.Drawing.Point(481, 6);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(128, 22);
+            this.textBoxSearch.TabIndex = 3;
             // 
             // SearchButton
             // 
@@ -102,6 +105,7 @@
             this.SearchButton.TabIndex = 4;
             this.SearchButton.Text = "Search ";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // label2
             // 
@@ -168,9 +172,12 @@
             // 
             // pictureBoxManage
             // 
+            this.pictureBoxManage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxManage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxManage.Image")));
             this.pictureBoxManage.Location = new System.Drawing.Point(101, 291);
             this.pictureBoxManage.Name = "pictureBoxManage";
             this.pictureBoxManage.Size = new System.Drawing.Size(247, 181);
+            this.pictureBoxManage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxManage.TabIndex = 12;
             this.pictureBoxManage.TabStop = false;
             // 
@@ -191,16 +198,17 @@
             // 
             // buttonUploadImage
             // 
-            this.buttonUploadImage.Location = new System.Drawing.Point(101, 478);
+            this.buttonUploadImage.Location = new System.Drawing.Point(91, 519);
             this.buttonUploadImage.Name = "buttonUploadImage";
             this.buttonUploadImage.Size = new System.Drawing.Size(247, 37);
             this.buttonUploadImage.TabIndex = 15;
             this.buttonUploadImage.Text = "Upload Image";
             this.buttonUploadImage.UseVisualStyleBackColor = true;
+            this.buttonUploadImage.Click += new System.EventHandler(this.buttonUploadImage_Click);
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(368, 478);
+            this.buttonAdd.Location = new System.Drawing.Point(358, 519);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(117, 36);
             this.buttonAdd.TabIndex = 16;
@@ -209,7 +217,7 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(491, 478);
+            this.buttonEdit.Location = new System.Drawing.Point(481, 519);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(106, 36);
             this.buttonEdit.TabIndex = 17;
@@ -218,21 +226,23 @@
             // 
             // buttonRemove
             // 
-            this.buttonRemove.Location = new System.Drawing.Point(625, 478);
+            this.buttonRemove.Location = new System.Drawing.Point(615, 519);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(107, 37);
             this.buttonRemove.TabIndex = 18;
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(738, 478);
+            this.buttonRefresh.Location = new System.Drawing.Point(728, 519);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(115, 37);
             this.buttonRefresh.TabIndex = 19;
             this.buttonRefresh.Text = "Reflesh";
             this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // radioButtonMALE
             // 
@@ -293,11 +303,21 @@
             this.label9.TabIndex = 26;
             this.label9.Text = "ID:";
             // 
+            // labelPictureError
+            // 
+            this.labelPictureError.AutoSize = true;
+            this.labelPictureError.Location = new System.Drawing.Point(101, 479);
+            this.labelPictureError.Name = "labelPictureError";
+            this.labelPictureError.Size = new System.Drawing.Size(78, 16);
+            this.labelPictureError.TabIndex = 27;
+            this.labelPictureError.Text = "picture error";
+            // 
             // Manage_Student_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 526);
+            this.ClientSize = new System.Drawing.Size(876, 567);
+            this.Controls.Add(this.labelPictureError);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.textBoxLNAME);
@@ -321,12 +341,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.SearchButton);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelTotalStudent);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Manage_Student_Form";
             this.Text = "Manage_Student_Form";
+            this.Load += new System.EventHandler(this.Manage_Student_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManage)).EndInit();
             this.ResumeLayout(false);
@@ -339,7 +360,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label labelTotalStudent;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -363,5 +384,6 @@
         private System.Windows.Forms.TextBox textBoxLNAME;
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelPictureError;
     }
 }
