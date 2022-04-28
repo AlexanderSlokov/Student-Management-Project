@@ -73,6 +73,7 @@ namespace Student_Management_Project_week8.Student_Management
                 pictureBoxManage.Image = null;
             }
             textBoxID.Focus();
+            refreshfunc();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -111,12 +112,152 @@ namespace Student_Management_Project_week8.Student_Management
                 else
                 {
                     Pic = null;
+                    labelPictureError.Visible = true;
                     labelPictureError.Text = "Xin mời chèn hình học sinh";
                     return null;
                 }
             }
         }
 
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            int id = Int32.MinValue;
+            string fname = string.Empty, lname = string.Empty, phone = string.Empty, adrs = string.Empty, gender = string.Empty;
+            DateTime bdate;
+
+            int born_year = dateTimePicker.Value.Year;
+            int this_year = DateTime.Now.Year;
+
+            //error for ID
+            try
+            {
+                if (Int32.Parse(textBoxID.Text) >= 1)
+                {
+                    id = Convert.ToInt32(textBoxID.Text);
+                    //if no error, no execute label below
+                    labelStudentIdError.Text = string.Empty;
+                }
+            }
+            catch
+            {
+                labelStudentIdError.Visible = true;
+                labelStudentIdError.Text = ("Xin mời nhập ID");
+            }
+
+            //another error catchers added 
+            if (textBoxFNAME.TextLength > 0)
+            {
+                fname = textBoxFNAME.Text;
+                labelFirstNameError.Text = string.Empty;
+            }
+            else
+            {
+                labelFirstNameError.Visible = true;
+                labelFirstNameError.Text = ("Xin mời nhập họ tên lót");
+            }
+            if (textBoxLNAME.TextLength > 0)
+            {
+                lname = textBoxLNAME.Text;
+                labelLastNameError.Text = string.Empty;
+            }
+            else
+            {
+                labelLastNameError.Visible = true;
+                labelLastNameError.Text = ("Xin mời nhập họ tên");
+            }
+
+            bdate = dateTimePicker.Value;
+            
+            if (textBoxPHONE.TextLength > 0)
+            {
+                phone = textBoxPHONE.Text;
+                labelPhoneError.Text = string.Empty;
+            }
+            else
+            {
+                labelPhoneError.Visible = true;
+                labelPhoneError.Text = "Mời nhập số điện thoại";
+            }
+            if (richTextBoxADR.TextLength > 0)
+            {
+                adrs = richTextBoxADR.Text;
+                labelAddressError.Text = string.Empty;
+            }
+            else
+            {
+                labelPhoneError.Visible=true;   
+                labelPhoneError.Text = "Mời nhập địa chỉ";
+            }
+            if (radioButtonFEMALE.Checked == false && radioButtonMALE.Checked == false)
+            {
+                labelGenderError.Visible = true;
+                labelGenderError.Text = "Mời xác nhận giới tính";
+            }
+            else
+            {
+                labelGenderError.Text = string.Empty;
+            }
+            gender = "Male";
+
+            if (radioButtonFEMALE.Checked)
+            {
+                gender = "Female";
+            }
+            if (pictureBoxManage.Image == null)
+            {
+                labelPictureError.Visible = true;   
+                labelPictureError.Text = "Xin mời chèn hình học sinh";
+            }
+            else
+            {
+                labelPictureError.Text = string.Empty;
+            }
+            if (richTextBoxADR.TextLength > 0)
+            {
+                adrs = richTextBoxADR.Text;
+                labelAddressError.Text = string.Empty;
+            }
+            else
+            {
+                labelAddressError.Visible = true;   
+                labelAddressError.Text = "Xin mời nhập địa chỉ";
+            }
+
+            //especially student 's age
+            if ((this_year - born_year) < 10 || ((this_year - born_year) > 100))
+            {
+                labelBirthDateError.Visible = true;
+                labelBirthDateError.Text = "Tuổi sinh viên từ 10 đến 100 tuổi";
+            }
+            else
+            {
+                labelBirthDateError.Text = string.Empty;
+                if (verif())
+                {
+                    if (labelPictureError.Text == string.Empty)
+                    {
+                        // if infomations added successfully 
+                        if (student.insertStudent(id, fname, lname, bdate, gender, phone, adrs, Pic))
+                        {
+                            fillGrid(new SqlCommand("SELECT * FROM StudentInfo", mydb.GetConnection));
+                            MessageBox.Show("New Student Added!", "Add student", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        // In case have already existed student ID
+                        else
+                        {
+                            MessageBox.Show("Existed Student ID...", "Add Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    //in case no picture added
+                    else
+                    {
+                        MessageBox.Show("You need to insert Student's Picture", "Add Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+       
         public bool studentFind()
         {
             string fname = string.Empty;
@@ -230,3 +371,4 @@ namespace Student_Management_Project_week8.Student_Management
         }
     }
 }
+
