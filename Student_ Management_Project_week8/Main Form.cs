@@ -1,5 +1,6 @@
 ﻿using Student_Management_Project_week8;
 using Student_Management_Project_week8.Student_Management;
+using Student_Management_Project_week8.Courses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +59,12 @@ namespace Student_Management_Project_week8
         {
             Manage_Student_Form manageStudentForm = new Manage_Student_Form();  
             manageStudentForm.Show(this);   
+        }
+
+        private void aDDCOURSESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddingCourses addingCourses = new AddingCourses();  
+            addingCourses.Show(this);   
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 
-namespace Student_Management_Project_week8.Student_Management
+namespace Student_Management_Project_week8
 {
     class COURSES
     { 
