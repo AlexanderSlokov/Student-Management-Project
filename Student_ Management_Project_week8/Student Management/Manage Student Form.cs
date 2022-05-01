@@ -257,7 +257,152 @@ namespace Student_Management_Project_week8.Student_Management
             }
         }
 
-       
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            STUDENT student = new STUDENT();
+            try
+            {
+                if (Int32.Parse(textBoxID.Text) >= 1)
+                {
+                    id = Convert.ToInt32(textBoxID.Text);
+                    labelStudentIdError.Text = string.Empty;
+                }
+            }
+            catch
+            {
+                labelStudentIdError.Text = "Xin mời nhập ID hợp lệ";
+            }
+            //error catchers added
+            if (textBoxFNAME.TextLength > 0)
+            {
+                fname = textBoxFNAME.Text;
+                labelFirstNameError.Text = string.Empty;
+            }
+            else
+            {
+                labelFirstNameError.Text = ("Xin mời nhập họ tên lót");
+            }
+            if (textBoxLNAME.TextLength > 0)
+            {
+                lname = textBoxLNAME.Text;
+                labelLastNameError.Text = string.Empty;
+            }
+            else
+            {
+                labelLastNameError.Text = ("Xin mời nhập họ tên");
+            }
+
+            bdate = dateTimePicker.Value;
+
+            if (textBoxPHONE.TextLength > 0)
+            {
+                phone = textBoxPHONE.Text;
+                labelPhoneError.Text = string.Empty;
+            }
+            else
+            {
+                labelPhoneError.Text = "Mời nhập số điện thoại";
+            }
+            if (richTextBoxADR.TextLength > 0)
+            {
+                adrs = richTextBoxADR.Text;
+                labelAddressError.Text = string.Empty;
+            }
+            else
+            {
+                labelAddressError.Text = "Mời nhập địa chỉ";
+            }
+            gender = "Male";
+            if (radioButtonFEMALE.Checked)
+            {
+                gender = "Female";
+            }
+            if (pictureBoxManage.Image == null)
+            {
+                labelPictureError.Text = "Xin mời chèn hình học sinh";
+            }
+            else
+            {
+                labelPictureError.Text = string.Empty;
+            }
+            if (richTextBoxADR.TextLength > 0)
+            {
+                adrs = richTextBoxADR.Text;
+                labelAddressError.Text = string.Empty;
+            }
+            else
+            {
+                labelAddressError.Text = "Xin mời nhập địa chỉ";
+            }
+
+            //determite values to calculate student 's valid age
+            int born_year = dateTimePicker.Value.Year;
+            int this_year = DateTime.Now.Year;
+
+            if ((this_year - born_year) < 10 || ((this_year - born_year) > 100))
+            {
+
+                labelBirthDateError.Text = "Tuổi sinh viên từ 10 đến 100 tuổi";
+            }
+            else
+            {
+                labelBirthDateError.Text = string.Empty;
+                if (verif())
+                {
+                    if (labelPictureError.Text == string.Empty)
+                    {
+                        if (textBoxID.Text == initialID.ToString())
+                        {
+
+                            if (student.updateStudent(id, fname, lname, bdate, gender, phone, adrs, pic))
+                            {
+                                pictureBoxManage.Image.Save(this.pic, pictureBoxManage.Image.RawFormat);
+                                // new FIll function to change Grid
+                                fillGrid(new SqlCommand("SELECT * FROM StudentInfo", mydb.GetConnection));
+                                MessageBox.Show("Informations Updated", "Updating student", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error", "Updating Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        if (textBoxID.Text != initialID.ToString())
+                        {
+                            if (!student.existID(id))
+                            {
+                                pictureBoxManage.Image.Save(this.pic, pictureBoxManage.Image.RawFormat);
+                                student.deleteStudent(initialID, fname, lname, bdate, phone, adrs, gender);
+                                pictureBoxManage.Image.Save(this.pic, pictureBoxManage.Image.RawFormat);
+                                if (student.insertStudent(id, fname, lname, bdate, gender, phone, adrs, pic))
+                                {
+                                    fillGrid(new SqlCommand("SELECT * FROM std", mydb.GetConnection));
+                                    MessageBox.Show("Informations Updated", "Updating student", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error", "Updating Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("ID already existed", "Updating Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Insert Student's Picture", "Add Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
         public bool studentFind()
         {
             string fname = string.Empty;
