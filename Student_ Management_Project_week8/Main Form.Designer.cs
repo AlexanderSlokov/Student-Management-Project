@@ -41,6 +41,9 @@ namespace Student_Management_Project_week8
             this.manageStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aDDCOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eDITCOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pRINTCOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dELETECOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +55,7 @@ namespace Student_Management_Project_week8
             this.cOURSESToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(996, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(925, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -128,7 +131,10 @@ namespace Student_Management_Project_week8
             // cOURSESToolStripMenuItem
             // 
             this.cOURSESToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aDDCOURSESToolStripMenuItem});
+            this.aDDCOURSESToolStripMenuItem,
+            this.eDITCOURSESToolStripMenuItem,
+            this.pRINTCOURSESToolStripMenuItem,
+            this.dELETECOURSESToolStripMenuItem});
             this.cOURSESToolStripMenuItem.Name = "cOURSESToolStripMenuItem";
             this.cOURSESToolStripMenuItem.Size = new System.Drawing.Size(86, 27);
             this.cOURSESToolStripMenuItem.Text = "COURSES";
@@ -140,6 +146,27 @@ namespace Student_Management_Project_week8
             this.aDDCOURSESToolStripMenuItem.Text = "ADD COURSES";
             this.aDDCOURSESToolStripMenuItem.Click += new System.EventHandler(this.aDDCOURSESToolStripMenuItem_Click);
             // 
+            // eDITCOURSESToolStripMenuItem
+            // 
+            this.eDITCOURSESToolStripMenuItem.Name = "eDITCOURSESToolStripMenuItem";
+            this.eDITCOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.eDITCOURSESToolStripMenuItem.Text = "EDIT COURSES";
+            this.eDITCOURSESToolStripMenuItem.Click += new System.EventHandler(this.eDITCOURSESToolStripMenuItem_Click);
+            // 
+            // pRINTCOURSESToolStripMenuItem
+            // 
+            this.pRINTCOURSESToolStripMenuItem.Name = "pRINTCOURSESToolStripMenuItem";
+            this.pRINTCOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pRINTCOURSESToolStripMenuItem.Text = "PRINT COURSES";
+            this.pRINTCOURSESToolStripMenuItem.Click += new System.EventHandler(this.pRINTCOURSESToolStripMenuItem_Click);
+            // 
+            // dELETECOURSESToolStripMenuItem
+            // 
+            this.dELETECOURSESToolStripMenuItem.Name = "dELETECOURSESToolStripMenuItem";
+            this.dELETECOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dELETECOURSESToolStripMenuItem.Text = "DELETE COURSES";
+            this.dELETECOURSESToolStripMenuItem.Click += new System.EventHandler(this.dELETECOURSESToolStripMenuItem_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -147,7 +174,7 @@ namespace Student_Management_Project_week8
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(996, 480);
+            this.ClientSize = new System.Drawing.Size(925, 480);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -172,5 +199,8 @@ namespace Student_Management_Project_week8
         private ToolStripMenuItem manageStudentToolStripMenuItem;
         private ToolStripMenuItem cOURSESToolStripMenuItem;
         private ToolStripMenuItem aDDCOURSESToolStripMenuItem;
+        private ToolStripMenuItem eDITCOURSESToolStripMenuItem;
+        private ToolStripMenuItem pRINTCOURSESToolStripMenuItem;
+        private ToolStripMenuItem dELETECOURSESToolStripMenuItem;
     }
 }

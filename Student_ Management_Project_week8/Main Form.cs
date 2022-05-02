@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Student_Management_Project_week8
 {
     public partial class Main_Form : Form
@@ -65,6 +66,25 @@ namespace Student_Management_Project_week8
         {
             AddingCourses addingCourses = new AddingCourses();  
             addingCourses.Show(this);   
+        }
+
+        private void eDITCOURSESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditCourses editCourses = new EditCourses();
+            editCourses.Show(this);
+
+        }
+
+        private void pRINTCOURSESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintCourses printCourses = new PrintCourses(); 
+            printCourses.Show(this);    
+        }
+
+        private void dELETECOURSESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeletingCourses deleting = new DeletingCourses();
+            deleting.Show(this);    
         }
     }
 }

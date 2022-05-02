@@ -66,6 +66,24 @@
     <Compile Include="Courses\AddingCourses.Designer.cs">
       <DependentUpon>AddingCourses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Courses\DeletingCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Courses\DeletingCourses.Designer.cs">
+      <DependentUpon>DeletingCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Courses\EditCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Courses\EditCourses.Designer.cs">
+      <DependentUpon>EditCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Courses\PrintCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Courses\PrintCourses.Designer.cs">
+      <DependentUpon>PrintCourses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student Management\EditRemove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +152,15 @@
     </Compile>
     <EmbeddedResource Include="Courses\AddingCourses.resx">
       <DependentUpon>AddingCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Courses\DeletingCourses.resx">
+      <DependentUpon>DeletingCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Courses\EditCourses.resx">
+      <DependentUpon>EditCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Courses\PrintCourses.resx">
+      <DependentUpon>PrintCourses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Student Management\EditRemove.resx">
       <DependentUpon>EditRemove.cs</DependentUpon>
