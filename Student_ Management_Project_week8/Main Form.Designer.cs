@@ -44,6 +44,7 @@ namespace Student_Management_Project_week8
             this.eDITCOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pRINTCOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dELETECOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mANAGECOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,7 +135,8 @@ namespace Student_Management_Project_week8
             this.aDDCOURSESToolStripMenuItem,
             this.eDITCOURSESToolStripMenuItem,
             this.pRINTCOURSESToolStripMenuItem,
-            this.dELETECOURSESToolStripMenuItem});
+            this.dELETECOURSESToolStripMenuItem,
+            this.mANAGECOURSESToolStripMenuItem});
             this.cOURSESToolStripMenuItem.Name = "cOURSESToolStripMenuItem";
             this.cOURSESToolStripMenuItem.Size = new System.Drawing.Size(86, 27);
             this.cOURSESToolStripMenuItem.Text = "COURSES";
@@ -166,6 +168,13 @@ namespace Student_Management_Project_week8
             this.dELETECOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.dELETECOURSESToolStripMenuItem.Text = "DELETE COURSES";
             this.dELETECOURSESToolStripMenuItem.Click += new System.EventHandler(this.dELETECOURSESToolStripMenuItem_Click);
+            // 
+            // mANAGECOURSESToolStripMenuItem
+            // 
+            this.mANAGECOURSESToolStripMenuItem.Name = "mANAGECOURSESToolStripMenuItem";
+            this.mANAGECOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mANAGECOURSESToolStripMenuItem.Text = "MANAGE COURSES";
+            this.mANAGECOURSESToolStripMenuItem.Click += new System.EventHandler(this.mANAGECOURSESToolStripMenuItem_Click);
             // 
             // Main_Form
             // 
@@ -202,5 +211,6 @@ namespace Student_Management_Project_week8
         private ToolStripMenuItem eDITCOURSESToolStripMenuItem;
         private ToolStripMenuItem pRINTCOURSESToolStripMenuItem;
         private ToolStripMenuItem dELETECOURSESToolStripMenuItem;
+        private ToolStripMenuItem mANAGECOURSESToolStripMenuItem;
     }
 }

@@ -78,6 +78,12 @@
     <Compile Include="Courses\EditCourses.Designer.cs">
       <DependentUpon>EditCourses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Courses\ManageCOURSES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Courses\ManageCOURSES.Designer.cs">
+      <DependentUpon>ManageCOURSES.cs</DependentUpon>
+    </Compile>
     <Compile Include="Courses\PrintCourses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Courses\EditCourses.resx">
       <DependentUpon>EditCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Courses\ManageCOURSES.resx">
+      <DependentUpon>ManageCOURSES.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Courses\PrintCourses.resx">
       <DependentUpon>PrintCourses.cs</DependentUpon>

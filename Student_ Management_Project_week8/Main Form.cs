@@ -86,5 +86,11 @@ namespace Student_Management_Project_week8
             DeletingCourses deleting = new DeletingCourses();
             deleting.Show(this);    
         }
+
+        private void mANAGECOURSESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageCOURSES manageCOURSES = new ManageCOURSES();
+            manageCOURSES.Show(this);
+        }
     }
 }
