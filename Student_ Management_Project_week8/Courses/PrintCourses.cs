@@ -205,7 +205,7 @@ namespace Student_Management_Project_week8.Courses
             sf.Filter = "Word 2007 or Higher {.docx} | *.docx";
             if (sf.ShowDialog() == DialogResult.OK)
             {
-                dataGridViewCourses.ExportToWord;
+               
             }
 
         }

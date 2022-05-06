@@ -1,10 +1,5 @@
 using System.Data;
 using System.Data.SqlClient;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Student_Management_Project_week8;
 using System.Windows.Forms;
 using System;
 
