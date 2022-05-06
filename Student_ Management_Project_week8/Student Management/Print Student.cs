@@ -187,6 +187,7 @@ namespace Student_Management_Project_week8.Student_Management
                 //Create a new document  
                 Microsoft.Office.Interop.Word.Document document = WindowWord.Documents.Add(ref missingVar, ref missingVar, ref missingVar, ref missingVar);
                 document.Application.Visible = true;
+                
                 document.PageSetup.Orientation = WdOrientation.wdOrientLandscape;
                 //Add header to the doc
                 foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
@@ -217,13 +218,6 @@ namespace Student_Management_Project_week8.Student_Management
                 paragraph1.Range.set_Style(ref styleHeading1);
                 paragraph1.Range.Text = "FACULTY: HIGH QUALITY";
                 paragraph1.Range.InsertParagraphAfter();
-
-                //Add paragraph with Heading 2 style  
-                Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missingVar);
-                object styleHeading2 = "Heading 2";
-                para1.Range.set_Style(ref styleHeading2);
-                para1.Range.Text = "CLASS: OOPPR230279E_03CLC";
-                para1.Range.InsertParagraphAfter();
 
                 Table studentTable = document.Tables.Add(paragraph1.Range, NoStudent, 8, ref missingVar, ref missingVar);
                 studentTable.Borders.Enable = 1;
@@ -321,7 +315,7 @@ namespace Student_Management_Project_week8.Student_Management
                     }
                 }
                 //Save the document  
-                object filename = @"E:\\student.docx";
+                //object filename = @"E:\\student.docx";
                 //document.SaveAs2(ref filename);
                 //document.Close(ref missing, ref missing, ref missing);
                 //document = null;

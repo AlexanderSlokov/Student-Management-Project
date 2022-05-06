@@ -102,7 +102,7 @@ namespace Student_Management_Project_week8.Courses
             string description = textBoxDescription.Text;
             int id = (int)comboBoxSelectCourse.SelectedValue;
             int semester = (int)comboBoxSemester.SelectedValue;
-            bool labelValid = false, periodValid = false, semesterValid = false;
+            bool labelValid = false, periodValid = false; //semesterValid = false;
             //check vailidation
             if (label.Trim() == "")
             {

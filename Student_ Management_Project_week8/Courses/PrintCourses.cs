@@ -124,7 +124,7 @@ namespace Student_Management_Project_week8.Courses
                     foreach (Cell cell in row.Cells)
                     {
                         //Header row  
-                        if (cell.RowIndex == 1)
+                        if (cell.RowIndex == 1 )
                         {
                             int index = cell.ColumnIndex;
                             switch (index)
@@ -187,8 +187,6 @@ namespace Student_Management_Project_week8.Courses
                 }
                 //Save the document  
                 //object filename = @"E:\\Courses List.docx";
-                
-                
                 //document.SaveAs2(ref filename);
                 //document.Close(ref missing, ref missing, ref missing);
                 //document = null;
@@ -202,8 +200,15 @@ namespace Student_Management_Project_week8.Courses
             {
                 MessageBox.Show(ex.Message);
             }
-        }
 
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.Filter = "Word 2007 or Higher {.docx} | *.docx";
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                dataGridViewCourses.ExportToWord;
+            }
+
+        }
         private void buttonToText_Click(object sender, EventArgs e)
         {
             CreateDocument(this.dataGridViewCourses);

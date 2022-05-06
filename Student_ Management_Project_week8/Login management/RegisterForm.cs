@@ -1,5 +1,4 @@
 ﻿using Student_Management_Project_week8;
-using Student_Management_Project_week8;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

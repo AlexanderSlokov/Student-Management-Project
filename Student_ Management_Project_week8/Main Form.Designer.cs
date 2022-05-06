@@ -45,6 +45,8 @@ namespace Student_Management_Project_week8
             this.pRINTCOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dELETECOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mANAGECOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rESULTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +55,9 @@ namespace Student_Management_Project_week8
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sTUDENTToolStripMenuItem,
-            this.cOURSESToolStripMenuItem});
+            this.cOURSESToolStripMenuItem,
+            this.sCOREToolStripMenuItem,
+            this.rESULTToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(925, 31);
@@ -131,6 +135,7 @@ namespace Student_Management_Project_week8
             // 
             // cOURSESToolStripMenuItem
             // 
+            this.cOURSESToolStripMenuItem.BackColor = System.Drawing.Color.LightBlue;
             this.cOURSESToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aDDCOURSESToolStripMenuItem,
             this.eDITCOURSESToolStripMenuItem,
@@ -176,6 +181,18 @@ namespace Student_Management_Project_week8
             this.mANAGECOURSESToolStripMenuItem.Text = "MANAGE COURSES";
             this.mANAGECOURSESToolStripMenuItem.Click += new System.EventHandler(this.mANAGECOURSESToolStripMenuItem_Click);
             // 
+            // sCOREToolStripMenuItem
+            // 
+            this.sCOREToolStripMenuItem.Name = "sCOREToolStripMenuItem";
+            this.sCOREToolStripMenuItem.Size = new System.Drawing.Size(68, 27);
+            this.sCOREToolStripMenuItem.Text = "SCORE";
+            // 
+            // rESULTToolStripMenuItem
+            // 
+            this.rESULTToolStripMenuItem.Name = "rESULTToolStripMenuItem";
+            this.rESULTToolStripMenuItem.Size = new System.Drawing.Size(72, 27);
+            this.rESULTToolStripMenuItem.Text = "RESULT";
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -212,5 +229,7 @@ namespace Student_Management_Project_week8
         private ToolStripMenuItem pRINTCOURSESToolStripMenuItem;
         private ToolStripMenuItem dELETECOURSESToolStripMenuItem;
         private ToolStripMenuItem mANAGECOURSESToolStripMenuItem;
+        private ToolStripMenuItem sCOREToolStripMenuItem;
+        private ToolStripMenuItem rESULTToolStripMenuItem;
     }
 }
