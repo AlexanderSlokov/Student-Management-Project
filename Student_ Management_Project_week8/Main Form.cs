@@ -1,6 +1,7 @@
 ﻿using Student_Management_Project_week8;
 using Student_Management_Project_week8.Student_Management;
 using Student_Management_Project_week8.Courses;
+using Student_Management_Project_week8.Score;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 
 namespace Student_Management_Project_week8
@@ -91,6 +93,18 @@ namespace Student_Management_Project_week8
         {
             ManageCOURSES manageCOURSES = new ManageCOURSES();
             manageCOURSES.Show(this);
+        }
+
+        private void aDDSCOREToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Add_Score_Form add_Score_Form = new Add_Score_Form();
+            add_Score_Form.Show(this);
+        }
+
+        private void aVERGARESCOREToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AvergareScore avergareScore = new AvergareScore();
+            avergareScore.Show(this); 
         }
     }
 }

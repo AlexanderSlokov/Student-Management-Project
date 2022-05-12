@@ -46,7 +46,10 @@ namespace Student_Management_Project_week8
             this.dELETECOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mANAGECOURSESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aDDSCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aVERGARESCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rESULTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.averageResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,49 +152,74 @@ namespace Student_Management_Project_week8
             // aDDCOURSESToolStripMenuItem
             // 
             this.aDDCOURSESToolStripMenuItem.Name = "aDDCOURSESToolStripMenuItem";
-            this.aDDCOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aDDCOURSESToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.aDDCOURSESToolStripMenuItem.Text = "ADD COURSES";
             this.aDDCOURSESToolStripMenuItem.Click += new System.EventHandler(this.aDDCOURSESToolStripMenuItem_Click);
             // 
             // eDITCOURSESToolStripMenuItem
             // 
             this.eDITCOURSESToolStripMenuItem.Name = "eDITCOURSESToolStripMenuItem";
-            this.eDITCOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.eDITCOURSESToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.eDITCOURSESToolStripMenuItem.Text = "EDIT COURSES";
             this.eDITCOURSESToolStripMenuItem.Click += new System.EventHandler(this.eDITCOURSESToolStripMenuItem_Click);
             // 
             // pRINTCOURSESToolStripMenuItem
             // 
             this.pRINTCOURSESToolStripMenuItem.Name = "pRINTCOURSESToolStripMenuItem";
-            this.pRINTCOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pRINTCOURSESToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.pRINTCOURSESToolStripMenuItem.Text = "PRINT COURSES";
             this.pRINTCOURSESToolStripMenuItem.Click += new System.EventHandler(this.pRINTCOURSESToolStripMenuItem_Click);
             // 
             // dELETECOURSESToolStripMenuItem
             // 
             this.dELETECOURSESToolStripMenuItem.Name = "dELETECOURSESToolStripMenuItem";
-            this.dELETECOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dELETECOURSESToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.dELETECOURSESToolStripMenuItem.Text = "DELETE COURSES";
             this.dELETECOURSESToolStripMenuItem.Click += new System.EventHandler(this.dELETECOURSESToolStripMenuItem_Click);
             // 
             // mANAGECOURSESToolStripMenuItem
             // 
             this.mANAGECOURSESToolStripMenuItem.Name = "mANAGECOURSESToolStripMenuItem";
-            this.mANAGECOURSESToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mANAGECOURSESToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.mANAGECOURSESToolStripMenuItem.Text = "MANAGE COURSES";
             this.mANAGECOURSESToolStripMenuItem.Click += new System.EventHandler(this.mANAGECOURSESToolStripMenuItem_Click);
             // 
             // sCOREToolStripMenuItem
             // 
+            this.sCOREToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aDDSCOREToolStripMenuItem,
+            this.aVERGARESCOREToolStripMenuItem});
             this.sCOREToolStripMenuItem.Name = "sCOREToolStripMenuItem";
             this.sCOREToolStripMenuItem.Size = new System.Drawing.Size(68, 27);
             this.sCOREToolStripMenuItem.Text = "SCORE";
             // 
+            // aDDSCOREToolStripMenuItem
+            // 
+            this.aDDSCOREToolStripMenuItem.Name = "aDDSCOREToolStripMenuItem";
+            this.aDDSCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aDDSCOREToolStripMenuItem.Text = "ADD SCORE";
+            this.aDDSCOREToolStripMenuItem.Click += new System.EventHandler(this.aDDSCOREToolStripMenuItem_Click);
+            // 
+            // aVERGARESCOREToolStripMenuItem
+            // 
+            this.aVERGARESCOREToolStripMenuItem.Name = "aVERGARESCOREToolStripMenuItem";
+            this.aVERGARESCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aVERGARESCOREToolStripMenuItem.Text = "AVERGARE SCORE";
+            this.aVERGARESCOREToolStripMenuItem.Click += new System.EventHandler(this.aVERGARESCOREToolStripMenuItem_Click);
+            // 
             // rESULTToolStripMenuItem
             // 
+            this.rESULTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.averageResultToolStripMenuItem});
             this.rESULTToolStripMenuItem.Name = "rESULTToolStripMenuItem";
             this.rESULTToolStripMenuItem.Size = new System.Drawing.Size(72, 27);
             this.rESULTToolStripMenuItem.Text = "RESULT";
+            // 
+            // averageResultToolStripMenuItem
+            // 
+            this.averageResultToolStripMenuItem.Name = "averageResultToolStripMenuItem";
+            this.averageResultToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.averageResultToolStripMenuItem.Text = "Average Result";
             // 
             // Main_Form
             // 
@@ -231,5 +259,8 @@ namespace Student_Management_Project_week8
         private ToolStripMenuItem mANAGECOURSESToolStripMenuItem;
         private ToolStripMenuItem sCOREToolStripMenuItem;
         private ToolStripMenuItem rESULTToolStripMenuItem;
+        private ToolStripMenuItem aDDSCOREToolStripMenuItem;
+        private ToolStripMenuItem aVERGARESCOREToolStripMenuItem;
+        private ToolStripMenuItem averageResultToolStripMenuItem;
     }
 }

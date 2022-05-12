@@ -44,10 +44,12 @@
     <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,9 +59,11 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\COURSES.cs" />
+    <Compile Include="Class\SCORE.cs" />
     <Compile Include="Courses\AddingCourses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +93,24 @@
     </Compile>
     <Compile Include="Courses\PrintCourses.Designer.cs">
       <DependentUpon>PrintCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Result\AverageResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Result\AverageResult.Designer.cs">
+      <DependentUpon>AverageResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score\Add Score Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score\Add Score Form.Designer.cs">
+      <DependentUpon>Add Score Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score\AvergareScore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score\AvergareScore.Designer.cs">
+      <DependentUpon>AvergareScore.cs</DependentUpon>
     </Compile>
     <Compile Include="Student Management\EditRemove.cs">
       <SubType>Form</SubType>
@@ -170,6 +192,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Courses\PrintCourses.resx">
       <DependentUpon>PrintCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Result\AverageResult.resx">
+      <DependentUpon>AverageResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score\Add Score Form.resx">
+      <DependentUpon>Add Score Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score\AvergareScore.resx">
+      <DependentUpon>AvergareScore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Student Management\EditRemove.resx">
       <DependentUpon>EditRemove.cs</DependentUpon>
