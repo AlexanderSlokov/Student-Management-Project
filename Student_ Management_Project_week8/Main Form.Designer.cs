@@ -48,8 +48,12 @@ namespace Student_Management_Project_week8
             this.sCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aDDSCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aVERGARESCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mANAGESCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pRINTSCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rESULTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.averageResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.staticResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dELETESCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,7 +192,10 @@ namespace Student_Management_Project_week8
             // 
             this.sCOREToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aDDSCOREToolStripMenuItem,
-            this.aVERGARESCOREToolStripMenuItem});
+            this.aVERGARESCOREToolStripMenuItem,
+            this.mANAGESCOREToolStripMenuItem,
+            this.pRINTSCOREToolStripMenuItem,
+            this.dELETESCOREToolStripMenuItem});
             this.sCOREToolStripMenuItem.Name = "sCOREToolStripMenuItem";
             this.sCOREToolStripMenuItem.Size = new System.Drawing.Size(68, 27);
             this.sCOREToolStripMenuItem.Text = "SCORE";
@@ -207,10 +214,25 @@ namespace Student_Management_Project_week8
             this.aVERGARESCOREToolStripMenuItem.Text = "AVERGARE SCORE";
             this.aVERGARESCOREToolStripMenuItem.Click += new System.EventHandler(this.aVERGARESCOREToolStripMenuItem_Click);
             // 
+            // mANAGESCOREToolStripMenuItem
+            // 
+            this.mANAGESCOREToolStripMenuItem.Name = "mANAGESCOREToolStripMenuItem";
+            this.mANAGESCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mANAGESCOREToolStripMenuItem.Text = "MANAGE SCORE";
+            this.mANAGESCOREToolStripMenuItem.Click += new System.EventHandler(this.mANAGESCOREToolStripMenuItem_Click);
+            // 
+            // pRINTSCOREToolStripMenuItem
+            // 
+            this.pRINTSCOREToolStripMenuItem.Name = "pRINTSCOREToolStripMenuItem";
+            this.pRINTSCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pRINTSCOREToolStripMenuItem.Text = "PRINT SCORE";
+            this.pRINTSCOREToolStripMenuItem.Click += new System.EventHandler(this.pRINTSCOREToolStripMenuItem_Click);
+            // 
             // rESULTToolStripMenuItem
             // 
             this.rESULTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.averageResultToolStripMenuItem});
+            this.averageResultToolStripMenuItem,
+            this.staticResultToolStripMenuItem});
             this.rESULTToolStripMenuItem.Name = "rESULTToolStripMenuItem";
             this.rESULTToolStripMenuItem.Size = new System.Drawing.Size(72, 27);
             this.rESULTToolStripMenuItem.Text = "RESULT";
@@ -218,8 +240,21 @@ namespace Student_Management_Project_week8
             // averageResultToolStripMenuItem
             // 
             this.averageResultToolStripMenuItem.Name = "averageResultToolStripMenuItem";
-            this.averageResultToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.averageResultToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
             this.averageResultToolStripMenuItem.Text = "Average Result";
+            // 
+            // staticResultToolStripMenuItem
+            // 
+            this.staticResultToolStripMenuItem.Name = "staticResultToolStripMenuItem";
+            this.staticResultToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.staticResultToolStripMenuItem.Text = "Static Result";
+            // 
+            // dELETESCOREToolStripMenuItem
+            // 
+            this.dELETESCOREToolStripMenuItem.Name = "dELETESCOREToolStripMenuItem";
+            this.dELETESCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dELETESCOREToolStripMenuItem.Text = "DELETE SCORE";
+            this.dELETESCOREToolStripMenuItem.Click += new System.EventHandler(this.dELETESCOREToolStripMenuItem_Click);
             // 
             // Main_Form
             // 
@@ -262,5 +297,9 @@ namespace Student_Management_Project_week8
         private ToolStripMenuItem aDDSCOREToolStripMenuItem;
         private ToolStripMenuItem aVERGARESCOREToolStripMenuItem;
         private ToolStripMenuItem averageResultToolStripMenuItem;
+        private ToolStripMenuItem staticResultToolStripMenuItem;
+        private ToolStripMenuItem mANAGESCOREToolStripMenuItem;
+        private ToolStripMenuItem pRINTSCOREToolStripMenuItem;
+        private ToolStripMenuItem dELETESCOREToolStripMenuItem;
     }
 }

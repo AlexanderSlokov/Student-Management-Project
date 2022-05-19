@@ -54,6 +54,7 @@
             this.buttonAddScore.TabIndex = 17;
             this.buttonAddScore.Text = "Add Score";
             this.buttonAddScore.UseVisualStyleBackColor = false;
+            this.buttonAddScore.Click += new System.EventHandler(this.buttonAddScore_Click);
             // 
             // comboBoxSelectCourse
             // 

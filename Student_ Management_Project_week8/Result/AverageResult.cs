@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Student__Management_Project_week8.Result
+namespace Student_Management_Project_week8.Result
 {
     public partial class AverageResult : Form
     {

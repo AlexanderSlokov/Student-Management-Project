@@ -190,7 +190,6 @@ namespace Student_Management_Project_week8.Courses
                     MessageBox.Show("Course Not Inserted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            //
         }
 
 
@@ -202,7 +201,7 @@ namespace Student_Management_Project_week8.Courses
             int period = (int)numericUpDownHoursNumber.Value;
             string description = textBoxDescription.Text;
             int semester = (int)comboBoxSemester.SelectedValue;
-            bool labelValid = false, periodValid = false; //, semesterValid = false;
+            bool labelValid = false, periodValid = false, semesterValid = false;
             //check vailidation
             if (label.Trim() == "")
             {
@@ -247,7 +246,6 @@ namespace Student_Management_Project_week8.Courses
                     MessageBox.Show("Course Not Updated", "Edit Course", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            //
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)

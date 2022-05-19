@@ -62,7 +62,7 @@ namespace Student_Management_Project_week8.Class
             SqlCommand command = new SqlCommand();
             command.Connection = mydb.GetConnection;
 
-            command.CommandText = "SELECT course.Label, AVG(score.student_score) As AverageGrade FROM course, score WHERE course.ID = score.course_id GROUP BY course.label";
+            command.CommandText = "SELECT course.label, AVG(score.student_score) As AverageGrade FROM course, score WHERE course.id = score.course_id GROUP BY course.label";
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
 
@@ -76,7 +76,7 @@ namespace Student_Management_Project_week8.Class
             SqlCommand command = new SqlCommand();
             command.Connection = mydb.GetConnection;
 
-            command.CommandText = "SELECT score.student_id, std.fname, std.lname, score.course_id, course.label, score.student_score FROM std INNER JOIN score ON std.id = score.student_id INNER JOIN course ON score.course_id = course.id WHERE score.course_id = @cid";
+            command.CommandText = "SELECT score.student_id, StudentInfo.fname, StudentInfo.lname, score.course_id, course.label, score.student_score FROM StudentInfo INNER JOIN score ON StudentInfo.ID = score.student_id INNER JOIN course ON score.course_id = course.id WHERE score.course_id = @cid";
             command.Parameters.Add("@cid", SqlDbType.Int).Value = courseID;
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
@@ -92,7 +92,7 @@ namespace Student_Management_Project_week8.Class
             SqlCommand command = new SqlCommand();
             command.Connection = mydb.GetConnection;
 
-            command.CommandText = "SELECT score.student_id, std.fname, std.lname, score.course_id, course.label, score.student_score FROM std INNER JOIN score ON std.id = score.student_id INNER JOIN course ON score.course_id = course.id WHERE score.student_id = @sid";
+            command.CommandText = "SELECT score.student_id, StudentInfo.fname, StudentInfo.lname, score.course_id, course.label, score.student_score FROM StudentInfo INNER JOIN score ON StudentInfo.ID = score.student_id INNER JOIN course ON score.course_id = course.id WHERE score.student_id = @sid";
             command.Parameters.Add("@sid", SqlDbType.Int).Value = studentID;
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
@@ -123,7 +123,7 @@ namespace Student_Management_Project_week8.Class
         // Fields: score.student_id, std.fname, std.lname, score.course_id, course.label, score.student_score
         public DataTable getStudentScore()
         {
-            SqlCommand command = new SqlCommand("SELECT score.student_id, std.fname, std.lname, score.course_id, course.label, score.student_score FROM std INNER JOIN score ON std.id = score.student_id INNER JOIN course ON score.course_id = course.id", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("SELECT score.student_id, StudentInfo.fname, StudentInfo.lname, score.course_id, course.label, score.student_score FROM StudentInfo INNER JOIN score ON StudentInfo.ID = score.student_id INNER JOIN course ON score.course_id = course.id", mydb.GetConnection);
 
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
@@ -134,7 +134,7 @@ namespace Student_Management_Project_week8.Class
         // Fields: score.student_id, std.fname, std.lname,
         public DataTable getAllStudentScore()
         {
-            SqlCommand command = new SqlCommand("SELECT std.id, std.fname, std.lname FROM course INNER JOIN ", mydb.GetConnection);
+            SqlCommand command = new SqlCommand("SELECT StudentInfo.id, StudentInfo.fname, StudentInfo.lname FROM course INNER JOIN ", mydb.GetConnection);
 
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();

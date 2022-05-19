@@ -22,7 +22,14 @@ namespace Student_Management_Project_week8.Score
         {
             InitializeComponent();
         }
-        private void formAverageScore_Load(object sender, EventArgs e)
+       
+
+        private void dataGridViewAverageScore_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void AvergareScore_Load(object sender, EventArgs e)
         {
             dataGridViewAverageScore.DataSource = score.getAverageScoreByCourse();
         }

@@ -31,7 +31,7 @@ namespace Student_Management_Project_week8.Score
             comboBoxSelectCourse.DisplayMember = "label";
             comboBoxSelectCourse.ValueMember = "id";
 
-            SqlCommand command = new SqlCommand("SELECT id, fname, lname FROM std");
+            SqlCommand command = new SqlCommand("SELECT id, fname, lname FROM StudentInfo");
             dataGridViewStudent.DataSource = student.getStudent(command);
             dataGridViewStudent.Columns[0].Width = 20;
             dataGridViewStudent.Columns[0].HeaderText = "ID";
@@ -44,7 +44,7 @@ namespace Student_Management_Project_week8.Score
 
         private void dataGridViewStudent_Click(object sender, EventArgs e)
         {
-            textBoxStudentID.Text = dataGridViewStudent.CurrentRow.Cells[0].Value.ToString();
+            textBoxStudentID.Text = dataGridViewStudent.CurrentRow.Cells.ToString();
         }
 
         private void buttonAddScore_Click(object sender, EventArgs e)
@@ -86,6 +86,5 @@ namespace Student_Management_Project_week8.Score
             }
             //
         }
-    
     }
 }

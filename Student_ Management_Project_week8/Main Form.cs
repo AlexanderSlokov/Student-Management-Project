@@ -11,8 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
+using Student_Management_Project_week8.Class;
 
 namespace Student_Management_Project_week8
 {
@@ -105,6 +104,24 @@ namespace Student_Management_Project_week8
         {
             AvergareScore avergareScore = new AvergareScore();
             avergareScore.Show(this); 
+        }
+
+        private void mANAGESCOREToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formManageScore manageScore = new formManageScore();
+            manageScore.Show(this);
+        }
+
+        private void pRINTSCOREToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Print_Score_Form print_Score_Form = new Print_Score_Form();
+            print_Score_Form.Show(this);
+        }
+
+        private void dELETESCOREToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Delete_Score delete_Score = new Delete_Score();
+            delete_Score.Show(this);    
         }
     }
 }

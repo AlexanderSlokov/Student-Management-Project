@@ -1,4 +1,4 @@
-﻿namespace Student__Management_Project_week8.Result
+﻿namespace Student_Management_Project_week8.Result
 {
     partial class AverageResult
     {

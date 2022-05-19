@@ -48,6 +48,9 @@
             this.buttonLast = new System.Windows.Forms.Button();
             this.buttonFirst = new System.Windows.Forms.Button();
             this.buttonTotalCourses = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHoursNumber)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,7 +176,7 @@
             this.textBoxDescription.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(300, 150);
+            this.textBoxDescription.Size = new System.Drawing.Size(300, 202);
             this.textBoxDescription.TabIndex = 25;
             // 
             // textBoxCourseLabel
@@ -206,49 +209,53 @@
             // 
             this.buttonNext.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline);
-            this.buttonNext.Location = new System.Drawing.Point(196, 419);
+            this.buttonNext.Location = new System.Drawing.Point(195, 470);
             this.buttonNext.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(122, 62);
             this.buttonNext.TabIndex = 36;
             this.buttonNext.Text = "Next";
             this.buttonNext.UseVisualStyleBackColor = false;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // buttonPrevious
             // 
             this.buttonPrevious.BackColor = System.Drawing.Color.OrangeRed;
             this.buttonPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline);
-            this.buttonPrevious.Location = new System.Drawing.Point(353, 419);
+            this.buttonPrevious.Location = new System.Drawing.Point(352, 470);
             this.buttonPrevious.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPrevious.Name = "buttonPrevious";
             this.buttonPrevious.Size = new System.Drawing.Size(122, 62);
             this.buttonPrevious.TabIndex = 35;
             this.buttonPrevious.Text = "Previous";
             this.buttonPrevious.UseVisualStyleBackColor = false;
+            this.buttonPrevious.Click += new System.EventHandler(this.buttonPrevious_Click);
             // 
             // buttonLast
             // 
             this.buttonLast.BackColor = System.Drawing.Color.DimGray;
             this.buttonLast.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline);
-            this.buttonLast.Location = new System.Drawing.Point(505, 419);
+            this.buttonLast.Location = new System.Drawing.Point(504, 470);
             this.buttonLast.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLast.Name = "buttonLast";
             this.buttonLast.Size = new System.Drawing.Size(122, 62);
             this.buttonLast.TabIndex = 34;
             this.buttonLast.Text = "Last";
             this.buttonLast.UseVisualStyleBackColor = false;
+            this.buttonLast.Click += new System.EventHandler(this.buttonLast_Click);
             // 
             // buttonFirst
             // 
             this.buttonFirst.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonFirst.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFirst.Location = new System.Drawing.Point(44, 419);
+            this.buttonFirst.Location = new System.Drawing.Point(43, 470);
             this.buttonFirst.Margin = new System.Windows.Forms.Padding(4);
             this.buttonFirst.Name = "buttonFirst";
             this.buttonFirst.Size = new System.Drawing.Size(122, 62);
             this.buttonFirst.TabIndex = 33;
             this.buttonFirst.Text = "First";
             this.buttonFirst.UseVisualStyleBackColor = false;
+            this.buttonFirst.Click += new System.EventHandler(this.buttonFirst_Click);
             // 
             // buttonTotalCourses
             // 
@@ -260,11 +267,53 @@
             this.buttonTotalCourses.Text = "Total Course:";
             this.buttonTotalCourses.UseVisualStyleBackColor = true;
             // 
+            // buttonAdd
+            // 
+            this.buttonAdd.BackColor = System.Drawing.Color.SpringGreen;
+            this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdd.Location = new System.Drawing.Point(487, 260);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(161, 62);
+            this.buttonAdd.TabIndex = 40;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEdit.Location = new System.Drawing.Point(487, 330);
+            this.buttonEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(161, 62);
+            this.buttonEdit.TabIndex = 39;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = false;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.BackColor = System.Drawing.Color.Red;
+            this.buttonRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRemove.Location = new System.Drawing.Point(488, 400);
+            this.buttonRemove.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(161, 62);
+            this.buttonRemove.TabIndex = 38;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = false;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
             // ManageCOURSES
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(939, 493);
+            this.ClientSize = new System.Drawing.Size(939, 545);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonEdit);
+            this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.buttonTotalCourses);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrevious);
@@ -316,5 +365,8 @@
         private System.Windows.Forms.Button buttonLast;
         private System.Windows.Forms.Button buttonFirst;
         private System.Windows.Forms.Button buttonTotalCourses;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonRemove;
     }
 }

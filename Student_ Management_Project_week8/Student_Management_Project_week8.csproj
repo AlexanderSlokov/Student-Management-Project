@@ -112,6 +112,24 @@
     <Compile Include="Score\AvergareScore.Designer.cs">
       <DependentUpon>AvergareScore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Score\Delete Score.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score\Delete Score.Designer.cs">
+      <DependentUpon>Delete Score.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score\Manage Score Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score\Manage Score Form.Designer.cs">
+      <DependentUpon>Manage Score Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score\Print Score Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score\Print Score Form.Designer.cs">
+      <DependentUpon>Print Score Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student Management\EditRemove.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +219,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Score\AvergareScore.resx">
       <DependentUpon>AvergareScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score\Delete Score.resx">
+      <DependentUpon>Delete Score.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score\Manage Score Form.resx">
+      <DependentUpon>Manage Score Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score\Print Score Form.resx">
+      <DependentUpon>Print Score Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Student Management\EditRemove.resx">
       <DependentUpon>EditRemove.cs</DependentUpon>
