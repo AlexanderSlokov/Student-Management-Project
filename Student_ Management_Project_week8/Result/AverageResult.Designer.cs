@@ -30,15 +30,17 @@
         {
             this.dataGridViewResult = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtb_LName = new System.Windows.Forms.TextBox();
+            this.textBoxLName = new System.Windows.Forms.TextBox();
             this.labelLastName = new System.Windows.Forms.Label();
             this.labelFirstName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txb_Id = new System.Windows.Forms.TextBox();
             this.labelStudentID = new System.Windows.Forms.Label();
+            this.bt_Print = new System.Windows.Forms.Button();
+            this.bt_Cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +53,7 @@
             this.dataGridViewResult.RowHeadersWidth = 51;
             this.dataGridViewResult.Size = new System.Drawing.Size(864, 293);
             this.dataGridViewResult.TabIndex = 21;
+            this.dataGridViewResult.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewResult_CellContentClick);
             // 
             // label1
             // 
@@ -64,23 +67,24 @@
             this.label1.Text = "Student Result";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox4
+            // textBoxSearch
             // 
-            this.textBox4.Location = new System.Drawing.Point(175, 326);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(263, 22);
-            this.textBox4.TabIndex = 19;
+            this.textBoxSearch.Location = new System.Drawing.Point(175, 326);
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(263, 22);
+            this.textBoxSearch.TabIndex = 19;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(18, 326);
+            this.buttonSearch.Location = new System.Drawing.Point(17, 315);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(100, 36);
             this.buttonSearch.TabIndex = 18;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // label
             // 
@@ -94,21 +98,21 @@
             this.label.TabIndex = 17;
             this.label.Text = "Search By ID, First Name";
             // 
-            // textBox3
+            // txtb_LName
             // 
-            this.textBox3.Location = new System.Drawing.Point(175, 236);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(263, 22);
-            this.textBox3.TabIndex = 16;
+            this.txtb_LName.Location = new System.Drawing.Point(175, 236);
+            this.txtb_LName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtb_LName.Name = "txtb_LName";
+            this.txtb_LName.Size = new System.Drawing.Size(263, 22);
+            this.txtb_LName.TabIndex = 16;
             // 
-            // textBox2
+            // textBoxLName
             // 
-            this.textBox2.Location = new System.Drawing.Point(175, 147);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(263, 22);
-            this.textBox2.TabIndex = 15;
+            this.textBoxLName.Location = new System.Drawing.Point(175, 147);
+            this.textBoxLName.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLName.Name = "textBoxLName";
+            this.textBoxLName.Size = new System.Drawing.Size(263, 22);
+            this.textBoxLName.TabIndex = 15;
             // 
             // labelLastName
             // 
@@ -117,9 +121,9 @@
             this.labelLastName.Location = new System.Drawing.Point(13, 234);
             this.labelLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(104, 25);
+            this.labelLastName.Size = new System.Drawing.Size(106, 25);
             this.labelLastName.TabIndex = 14;
-            this.labelLastName.Text = "Student ID";
+            this.labelLastName.Text = "Last Name";
             this.labelLastName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // labelFirstName
@@ -134,13 +138,13 @@
             this.labelFirstName.Text = "First Name";
             this.labelFirstName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox1
+            // txb_Id
             // 
-            this.textBox1.Location = new System.Drawing.Point(175, 58);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 22);
-            this.textBox1.TabIndex = 12;
+            this.txb_Id.Location = new System.Drawing.Point(175, 58);
+            this.txb_Id.Margin = new System.Windows.Forms.Padding(4);
+            this.txb_Id.Name = "txb_Id";
+            this.txb_Id.Size = new System.Drawing.Size(263, 22);
+            this.txb_Id.TabIndex = 12;
             // 
             // labelStudentID
             // 
@@ -154,24 +158,53 @@
             this.labelStudentID.Text = "Student ID";
             this.labelStudentID.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // bt_Print
+            // 
+            this.bt_Print.BackColor = System.Drawing.Color.Tomato;
+            this.bt_Print.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_Print.Location = new System.Drawing.Point(175, 380);
+            this.bt_Print.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_Print.Name = "bt_Print";
+            this.bt_Print.Size = new System.Drawing.Size(101, 49);
+            this.bt_Print.TabIndex = 38;
+            this.bt_Print.Text = "Print";
+            this.bt_Print.UseVisualStyleBackColor = false;
+            this.bt_Print.Click += new System.EventHandler(this.bt_Print_Click);
+            // 
+            // bt_Cancel
+            // 
+            this.bt_Cancel.BackColor = System.Drawing.Color.Tomato;
+            this.bt_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_Cancel.Location = new System.Drawing.Point(337, 380);
+            this.bt_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_Cancel.Name = "bt_Cancel";
+            this.bt_Cancel.Size = new System.Drawing.Size(101, 49);
+            this.bt_Cancel.TabIndex = 37;
+            this.bt_Cancel.Text = "Cancel";
+            this.bt_Cancel.UseVisualStyleBackColor = false;
+            this.bt_Cancel.Click += new System.EventHandler(this.bt_Cancel_Click);
+            // 
             // AverageResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 450);
+            this.Controls.Add(this.bt_Print);
+            this.Controls.Add(this.bt_Cancel);
             this.Controls.Add(this.dataGridViewResult);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.label);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtb_LName);
+            this.Controls.Add(this.textBoxLName);
             this.Controls.Add(this.labelLastName);
             this.Controls.Add(this.labelFirstName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txb_Id);
             this.Controls.Add(this.labelStudentID);
             this.Name = "AverageResult";
             this.Text = "AverageResult";
+            this.Load += new System.EventHandler(this.AverageResult_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,14 +215,16 @@
 
         private System.Windows.Forms.DataGridView dataGridViewResult;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtb_LName;
+        private System.Windows.Forms.TextBox textBoxLName;
         private System.Windows.Forms.Label labelLastName;
         private System.Windows.Forms.Label labelFirstName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txb_Id;
         private System.Windows.Forms.Label labelStudentID;
+        private System.Windows.Forms.Button bt_Print;
+        private System.Windows.Forms.Button bt_Cancel;
     }
 }

@@ -2,6 +2,7 @@
 using Student_Management_Project_week8.Student_Management;
 using Student_Management_Project_week8.Courses;
 using Student_Management_Project_week8.Score;
+using Student_Management_Project_week8.Result;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -122,6 +123,18 @@ namespace Student_Management_Project_week8
         {
             Delete_Score delete_Score = new Delete_Score();
             delete_Score.Show(this);    
+        }
+
+        private void averageResultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AverageResult averageResult = new AverageResult();
+            averageResult.Show(this);   
+        }
+
+        private void staticResultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Static_Result static_Result = new Static_Result();  
+            static_Result.Show(this);   
         }
     }
 }

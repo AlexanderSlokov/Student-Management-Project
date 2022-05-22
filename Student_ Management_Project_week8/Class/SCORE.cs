@@ -12,7 +12,7 @@ namespace Student_Management_Project_week8.Class
 {
      class SCORE
     {
-
+        COURSES courses = new COURSES();
         MY_DB mydb = new MY_DB();
         public bool insertScore(int studentID, int courseID, float scoreValue, string description)
         {
@@ -142,6 +142,79 @@ namespace Student_Management_Project_week8.Class
 
             return table;
         }
-     }
+
+        public DataTable getAllCourseScoreAndResult()
+        {
+            SqlCommand command = new SqlCommand("SELECT ID , fname , lname  FROM StudentInfo", mydb.GetConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+
+            DataTable tableCourse = new DataTable();
+            tableCourse = courses.getAllCourses();
+
+            //lấy khóa học theo chiều ngang
+            for (int i = 0; i < tableCourse.Rows.Count; i++)
+            {
+                DataColumn CourseNamecolumn = new DataColumn();
+                CourseNamecolumn.ColumnName = tableCourse.Rows[i]["label"].ToString();
+                table.Columns.Add(CourseNamecolumn);
+            }
+            //lấy điểm của từng khóa học dựa theo id của học sinh
+            DataTable tableScore = new DataTable();
+            tableScore = this.getStudentScore();
+
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                for (int c = 0; c < tableScore.Rows.Count; c++)
+                {
+                    if (table.Rows[i]["id"].ToString() == tableScore.Rows[c]["student_id"].ToString())
+                    {
+                        for (int k = 3; k < table.Columns.Count; k++)
+                        {
+                            if (table.Columns[k].ColumnName == tableScore.Rows[c]["label"].ToString())
+                            {
+                                //string coursename = table.Columns[k].ColumnName;
+                                //table.Rows[i][coursename] = tableScore.Rows[c]["student_score"].ToString();
+                                table.Rows[i][k] = tableScore.Rows[c]["student_score"].ToString();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            table.Columns.Add("AVG_Score", typeof(float));
+            table.Columns.Add("Result", typeof(string));
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                int count = 0;
+                float sum = 0;
+                for (int j = 3; j < table.Columns.Count - 2; j++)
+                {
+                    float temp;
+                    string coursename = table.Columns[j].ColumnName;
+                    if (float.TryParse(table.Rows[i][coursename].ToString(), out temp))
+                    {
+                        sum += temp;
+                        count++;
+                    }
+                }
+
+                float avg = sum / count;
+                Math.Round(avg, 2);
+                table.Rows[i]["AVG_Score"] = Math.Round(avg, 2);
+
+                if (avg < 5) table.Rows[i]["Result"] = "Fail";
+                if (avg >= 5 && avg <= 6.5) table.Rows[i]["Result"] = "Average";
+                if (avg > 6.5 && avg <= 7.9) table.Rows[i]["Result"] = "Good";
+                if (avg >= 8) table.Rows[i]["Result"] = "Excellent";
+                if (count == 0) table.Rows[i]["Result"] = "Drop Out Of University!";
+                if (avg.ToString() == "NaN") table.Rows[i]["AVG_Score"] = 0;
+            }
+
+            return table;
+        }
+    }
 }
 

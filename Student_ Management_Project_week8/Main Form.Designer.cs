@@ -50,10 +50,10 @@ namespace Student_Management_Project_week8
             this.aVERGARESCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mANAGESCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pRINTSCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dELETESCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rESULTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.averageResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staticResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dELETESCOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -203,30 +203,37 @@ namespace Student_Management_Project_week8
             // aDDSCOREToolStripMenuItem
             // 
             this.aDDSCOREToolStripMenuItem.Name = "aDDSCOREToolStripMenuItem";
-            this.aDDSCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aDDSCOREToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.aDDSCOREToolStripMenuItem.Text = "ADD SCORE";
             this.aDDSCOREToolStripMenuItem.Click += new System.EventHandler(this.aDDSCOREToolStripMenuItem_Click);
             // 
             // aVERGARESCOREToolStripMenuItem
             // 
             this.aVERGARESCOREToolStripMenuItem.Name = "aVERGARESCOREToolStripMenuItem";
-            this.aVERGARESCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aVERGARESCOREToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.aVERGARESCOREToolStripMenuItem.Text = "AVERGARE SCORE";
             this.aVERGARESCOREToolStripMenuItem.Click += new System.EventHandler(this.aVERGARESCOREToolStripMenuItem_Click);
             // 
             // mANAGESCOREToolStripMenuItem
             // 
             this.mANAGESCOREToolStripMenuItem.Name = "mANAGESCOREToolStripMenuItem";
-            this.mANAGESCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.mANAGESCOREToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.mANAGESCOREToolStripMenuItem.Text = "MANAGE SCORE";
             this.mANAGESCOREToolStripMenuItem.Click += new System.EventHandler(this.mANAGESCOREToolStripMenuItem_Click);
             // 
             // pRINTSCOREToolStripMenuItem
             // 
             this.pRINTSCOREToolStripMenuItem.Name = "pRINTSCOREToolStripMenuItem";
-            this.pRINTSCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pRINTSCOREToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
             this.pRINTSCOREToolStripMenuItem.Text = "PRINT SCORE";
             this.pRINTSCOREToolStripMenuItem.Click += new System.EventHandler(this.pRINTSCOREToolStripMenuItem_Click);
+            // 
+            // dELETESCOREToolStripMenuItem
+            // 
+            this.dELETESCOREToolStripMenuItem.Name = "dELETESCOREToolStripMenuItem";
+            this.dELETESCOREToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.dELETESCOREToolStripMenuItem.Text = "DELETE SCORE";
+            this.dELETESCOREToolStripMenuItem.Click += new System.EventHandler(this.dELETESCOREToolStripMenuItem_Click);
             // 
             // rESULTToolStripMenuItem
             // 
@@ -240,21 +247,16 @@ namespace Student_Management_Project_week8
             // averageResultToolStripMenuItem
             // 
             this.averageResultToolStripMenuItem.Name = "averageResultToolStripMenuItem";
-            this.averageResultToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.averageResultToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.averageResultToolStripMenuItem.Text = "Average Result";
+            this.averageResultToolStripMenuItem.Click += new System.EventHandler(this.averageResultToolStripMenuItem_Click);
             // 
             // staticResultToolStripMenuItem
             // 
             this.staticResultToolStripMenuItem.Name = "staticResultToolStripMenuItem";
-            this.staticResultToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.staticResultToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.staticResultToolStripMenuItem.Text = "Static Result";
-            // 
-            // dELETESCOREToolStripMenuItem
-            // 
-            this.dELETESCOREToolStripMenuItem.Name = "dELETESCOREToolStripMenuItem";
-            this.dELETESCOREToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.dELETESCOREToolStripMenuItem.Text = "DELETE SCORE";
-            this.dELETESCOREToolStripMenuItem.Click += new System.EventHandler(this.dELETESCOREToolStripMenuItem_Click);
+            this.staticResultToolStripMenuItem.Click += new System.EventHandler(this.staticResultToolStripMenuItem_Click);
             // 
             // Main_Form
             // 

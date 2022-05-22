@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Word;
 using Student_Management_Project_week8;
+using Word = Microsoft.Office.Interop.Word;
+
 namespace Student_Management_Project_week8.Student_Management
 {
     public partial class Print_Student : Form
@@ -169,209 +171,58 @@ namespace Student_Management_Project_week8.Student_Management
             pictureColumn = (DataGridViewImageColumn)dataGridViewPrintView.Columns[7];
             pictureColumn.ImageLayout = DataGridViewImageCellLayout.Stretch;
 
-            //you are here
-        }
-
-
-        private void CreateDocument(DataGridView dataGridView)
-        {
-            int NoStudent = dataGridView.Rows.Count + 1;
-
-            try
-            {
-                Microsoft.Office.Interop.Word.Application WindowWord = new Microsoft.Office.Interop.Word.Application();
-
-                //Create missing variable ofr missing value
-                object missingVar = System.Reflection.Missing.Value;
-
-                //Create a new document  
-                Microsoft.Office.Interop.Word.Document document = WindowWord.Documents.Add(ref missingVar, ref missingVar, ref missingVar, ref missingVar);
-                document.Application.Visible = true;
-                
-                document.PageSetup.Orientation = WdOrientation.wdOrientLandscape;
-                //Add header to the doc
-                foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
-                {
-                    Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
-                    headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
-                    headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                    headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
-                    headerRange.Font.Size = 50;
-                    headerRange.Text = "Student List";
-                }
-
-                //add footer to the doc
-                foreach (Microsoft.Office.Interop.Word.Section WordSection in document.Sections)
-                {
-                    //get footer range and ajust detail
-                    Microsoft.Office.Interop.Word.Range footerRange = WordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
-                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
-                    footerRange.Font.Size = 10;
-                    footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                    footerRange.Text = "TRUONG DAI HOC SPKT";
-
-                }
-
-                //Add paragraph with Heading 1 Sytle
-                Microsoft.Office.Interop.Word.Paragraph paragraph1 = document.Content.Paragraphs.Add(ref missingVar);
-                object styleHeading1 = "Heading 1";
-                paragraph1.Range.set_Style(ref styleHeading1);
-                paragraph1.Range.Text = "FACULTY: HIGH QUALITY";
-                paragraph1.Range.InsertParagraphAfter();
-
-                Table studentTable = document.Tables.Add(paragraph1.Range, NoStudent, 8, ref missingVar, ref missingVar);
-                studentTable.Borders.Enable = 1;
-
-                foreach (Row row in studentTable.Rows)
-                {
-                    //
-                    foreach (Cell cell in row.Cells)
-                    {
-                        //Header row  
-                        if (cell.RowIndex == 1)
-                        {
-                            int index = cell.ColumnIndex;
-                            switch (index)
-                            {
-                                case 1:
-                                    cell.Range.Text = "ID";
-                                    break;
-                                case 2:
-                                    cell.Range.Text = "First Name";
-                                    break;
-                                case 3:
-                                    cell.Range.Text = "Last Name";
-                                    break;
-                                case 4:
-                                    cell.Range.Text = "Birthdate";
-                                    break;
-                                case 5:
-                                    cell.Range.Text = "Gender";
-                                    break;
-                                case 6:
-                                    cell.Range.Text = "Phone";
-                                    break;
-                                case 7:
-                                    cell.Range.Text = "Address";
-                                    break;
-                                case 8:
-                                    cell.Range.Text = "Picture";
-                                    break;
-                            }
-                            //cell.Range.Text = ((dataIndex) index).ToString();
-                            cell.Range.Font.Bold = 1;
-                            //other format properties goes here  
-                            cell.Range.Font.Name = "verdana";
-                            cell.Range.Font.Size = 8;
-                            //cell.Range.Font.ColorIndex = WdColorIndex.wdGray25;                              
-                            cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
-                            //Center alignment for the Header cells  
-                            cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                            cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-                            //[update]20/4 (1)
-                        }
-                        else
-                        {
-                            int index = cell.ColumnIndex;
-                            switch (index)
-                            {
-
-                                case 1:
-                                    //cell.Range.Text = reader["id"].ToString();
-                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
-                                    break;
-                                case 2:
-                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
-                                    break;
-                                case 3:
-                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
-                                    break;
-                                case 4:
-                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
-                                    break;
-                                case 5:
-                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
-                                    break;
-                                case 6:
-                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
-                                    break;
-                                case 7:
-                                    cell.Range.Text = dataGridView[index - 1, cell.RowIndex - 2].Value.ToString();
-                                    break;
-                                case 8:
-                                    byte[] imgbyte = (byte[])dataGridView[index - 1, cell.RowIndex - 2].Value;
-                                    MemoryStream ms = new MemoryStream(imgbyte);
-                                    //Image sparePicture = Image.FromStream(ms);
-                                    Image finalPic = (Image)(new Bitmap(Image.FromStream(ms), new Size(50, 50)));
-                                    Clipboard.SetDataObject(finalPic);
-                                    //document = document.Content.Paragraphs.Add();
-                                    //document = document.Content.Paragraphs.Add(ref missing);
-                                    cell.Range.Paste();
-                                    cell.Range.InsertParagraphAfter();
-                                    break;
-                            }
-
-                        }
-                    }
-                }
-                //Save the document  
-                //object filename = @"E:\\student.docx";
-                //document.SaveAs2(ref filename);
-                //document.Close(ref missing, ref missing, ref missing);
-                //document = null;
-                //winword.Quit(ref missing, ref missing, ref missing);
-                //winword = null;
-                MessageBox.Show("Document created successfully !");
-                mydb.closeConnection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failtal Error: " + ex.Message);
-            }
+            
         }
 
         public void Export_Data_To_Word(DataGridView DGV, string filename)
         {
-            int RowCount = DGV.Rows.Count;
-            int ColumnCount = DGV.Columns.Count;
-
-            Document oDoc = new Document();
-            oDoc.Application.Visible = true;
-
-            oDoc.PageSetup.Orientation = WdOrientation.wdOrientLandscape;
-
-            //dynamic oRange = oDoc.Content.Application.Selection.Range;
-            string oTemp = "";
-            Object oMissing = System.Reflection.Missing.Value;
-            for (int r = 0; r <= RowCount - 1; r++)
+            if (dataGridViewPrintView.Rows.Count != 0)
             {
-                oTemp = "";
-                for (int c = 0; c < ColumnCount - 1; c++)
+                int RowCount = dataGridViewPrintView.Rows.Count;
+                int ColumnCount = dataGridViewPrintView.Columns.Count;
+                Word.Document oDoc = new Word.Document();
+                oDoc.Application.Visible = true;
+                oDoc.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape;
+                //dynamic oRange = oDoc.Content.Application.Selection.Range;
+                string oTemp = " ";
+                Object oMissing = System.Reflection.Missing.Value;
+                for (int r = 0; r <= RowCount - 1; r++)
                 {
-                    oTemp = oTemp + DGV.Rows[r].Cells[c].Value + "\t";
+                    oTemp = "";
+                    for (int c = 0; c < ColumnCount - 1; c++)
+                    {
+                        oTemp = oTemp + dataGridViewPrintView.Rows[r].Cells[c].Value + "\t";
+                    }
+                    var oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
+                    oPara1.Range.Text = oTemp;
+                    oPara1.Range.InsertParagraphAfter();
+                    byte[] imgbyte = (byte[])dataGridViewPrintView.Rows[r].Cells[7].Value;
+                    MemoryStream ms = new MemoryStream(imgbyte);
+                    System.Drawing.Image sparePicture = System.Drawing.Image.FromStream(ms);
+                    System.Drawing.Image finalPic = (System.Drawing.Image)(new Bitmap(sparePicture, new
+                   Size(90, 90)));
+                    Clipboard.SetDataObject(finalPic);
+                    var oPara2 = oDoc.Content.Paragraphs.Add(ref oMissing);
+                    oPara2.Range.Paste();
+                    oPara2.Range.InsertParagraphAfter();
+                    //oTemp += "\n";
                 }
-                var oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
-                oPara1.Range.Text = oTemp;
-                oPara1.Range.InsertParagraphAfter();
-                byte[] imgbyte = (byte[])DGV.Rows[r].Cells[7].Value;
-                MemoryStream ms = new MemoryStream(imgbyte);
-                //Image sparePicture = Image.FromStream(ms);
-                Image finalPic = (Image)(new Bitmap(Image.FromStream(ms), new Size(50, 50)));
-                Clipboard.SetDataObject(finalPic);
-                var oPara2 = oDoc.Content.Paragraphs.Add(ref oMissing);
-                oPara2.Range.Paste();
-                oPara2.Range.InsertParagraphAfter();
-                //oTemp += "\n";
+                //save the file
+                oDoc.SaveAs2(filename);
             }
-
-            //save the file
-
-
         }
 
         private void buttonToTextFilePrint_Click(object sender, EventArgs e)
         {
-            CreateDocument(this.dataGridViewPrintView);
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.DefaultExt = "*.docx";
+            savefile.Filter = "DOCX files(*.docx)|*.docx";
+
+            if (savefile.ShowDialog() == DialogResult.OK && savefile.FileName.Length > 0)
+            {
+                Export_Data_To_Word(dataGridViewPrintView, savefile.FileName);
+                MessageBox.Show("File saved!", "Message Dialog", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void buttonPrintPreview_Click(object sender, EventArgs e)

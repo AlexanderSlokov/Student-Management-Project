@@ -162,7 +162,7 @@ namespace Student_Management_Project_week8
         public int studentNumber()
         {
             mydb.openConnection();
-            SqlCommand sqlCommand = new SqlCommand("SELECT COUNT(*) FROM std", mydb.GetConnection);
+            SqlCommand sqlCommand = new SqlCommand("SELECT COUNT(*) FROM StudentInfo", mydb.GetConnection);
             int stdnum = Convert.ToInt32(sqlCommand.ExecuteScalar());
 
             mydb.closeConnection();

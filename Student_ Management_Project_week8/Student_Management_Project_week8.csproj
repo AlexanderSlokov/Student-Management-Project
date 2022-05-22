@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -60,9 +66,34 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Document.NET, Version=2.3.22263.20500, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Document.NET.2.3.22263.20500\lib\net40\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Pdf, Version=2.3.22263.20500, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Pdf.2.3.22263.20500\lib\net40\Xceed.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=2.3.22263.20500, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Words.NET.2.3.22263.20500\lib\net40\Xceed.Words.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.3.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\COURSES.cs" />
+    <Compile Include="Class\ExcelDb.cs" />
     <Compile Include="Class\SCORE.cs" />
     <Compile Include="Courses\AddingCourses.cs">
       <SubType>Form</SubType>
@@ -94,11 +125,62 @@
     <Compile Include="Courses\PrintCourses.Designer.cs">
       <DependentUpon>PrintCourses.cs</DependentUpon>
     </Compile>
+    <Compile Include="HR Management\Contact Forms\Add Contact Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HR Management\Contact Forms\Add Contact Form.Designer.cs">
+      <DependentUpon>Add Contact Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HR Management\Contact Forms\Edit Contact Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HR Management\Contact Forms\Edit Contact Form.Designer.cs">
+      <DependentUpon>Edit Contact Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HR Management\Contact Forms\Select Contact Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HR Management\Contact Forms\Select Contact Form.Designer.cs">
+      <DependentUpon>Select Contact Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HR Management\Contact Forms\Show Contact List Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HR Management\Contact Forms\Show Contact List Form.Designer.cs">
+      <DependentUpon>Show Contact List Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HR Management\HR Classes\CONTACT.cs" />
+    <Compile Include="HR Management\HR Classes\GROUP.cs" />
+    <Compile Include="HR Management\Human Resourse Register Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HR Management\Human Resourse Register Form.Designer.cs">
+      <DependentUpon>Human Resourse Register Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HR Management\HumanResourceMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HR Management\HumanResourceMain.Designer.cs">
+      <DependentUpon>HumanResourceMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HR Management\HR Classes\USER.cs" />
+    <Compile Include="Login management\HRuserEditInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login management\HRuserEditInfo.Designer.cs">
+      <DependentUpon>HRuserEditInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Result\AverageResult.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Result\AverageResult.Designer.cs">
       <DependentUpon>AverageResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Result\Static Result.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Result\Static Result.Designer.cs">
+      <DependentUpon>Static Result.cs</DependentUpon>
     </Compile>
     <Compile Include="Score\Add Score Form.cs">
       <SubType>Form</SubType>
@@ -211,8 +293,23 @@
     <EmbeddedResource Include="Courses\PrintCourses.resx">
       <DependentUpon>PrintCourses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HR Management\Contact Forms\Select Contact Form.resx">
+      <DependentUpon>Select Contact Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HR Management\Human Resourse Register Form.resx">
+      <DependentUpon>Human Resourse Register Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HR Management\HumanResourceMain.resx">
+      <DependentUpon>HumanResourceMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login management\HRuserEditInfo.resx">
+      <DependentUpon>HRuserEditInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Result\AverageResult.resx">
       <DependentUpon>AverageResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Result\Static Result.resx">
+      <DependentUpon>Static Result.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score\Add Score Form.resx">
       <DependentUpon>Add Score Form.cs</DependentUpon>

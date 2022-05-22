@@ -376,7 +376,7 @@ namespace Student_Management_Project_week8.Student_Management
                                 pictureBoxManage.Image.Save(this.pic, pictureBoxManage.Image.RawFormat);
                                 if (student.insertStudent(id, fname, lname, bdate, gender, phone, adrs, pic))
                                 {
-                                    fillGrid(new SqlCommand("SELECT * FROM std", mydb.GetConnection));
+                                    fillGrid(new SqlCommand("SELECT * FROM StudentInfo", mydb.GetConnection));
                                     MessageBox.Show("Informations Updated", "Updating student", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 else

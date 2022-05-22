@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Office.Interop.Excel;
-using Excel = Microsoft.Office.Interop.Excel;
+using Student_Management_Project_week8.Class;
+using System.IO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+
 namespace Student_Management_Project_week8
 {
     public partial class Student_List : Form
@@ -21,7 +25,7 @@ namespace Student_Management_Project_week8
 
         STUDENT student = new STUDENT();
         MY_DB mydb = new MY_DB();
-
+        ExcelDb excelDb = new ExcelDb();
         private void Student_List_Load(object sender, EventArgs e)
         {
             dateTimePickerStartDate.CustomFormat = "dd - MM - yyyy";
@@ -36,7 +40,7 @@ namespace Student_Management_Project_week8
 
                 System.Data.DataTable dataTable = new System.Data.DataTable();
                 sqlDataAdapter.Fill(dataSet, "StudentInfo");
-
+                dataGridViewStudentList.AllowUserToAddRows = false; 
                 dataTable = dataSet.Tables["StudentInfo"];
                 dataGridViewStudentList.DataSource = dataTable;
                 dataGridViewStudentList.Columns[0].HeaderText = "Student ID";
@@ -146,63 +150,84 @@ namespace Student_Management_Project_week8
             }
         }
 
-        private void ExportDataGridViewToExcel(DataGridView dataGridView, bool isPrint)
+
+        private void ButtonToPdfFileList_Click(object sender, EventArgs e)
         {
-            Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-
-            app.Visible = true;
-
-            worksheet = (_Worksheet)workbook.Sheets["Sheet1"];
-            worksheet = (_Worksheet)workbook.ActiveSheet;
-
-            // changing the name of active sheet  
-            worksheet.Name = "Exported from gridview";
- 
-            // storing header part in Excel  
-            for (int i = 0; i < dataGridView.Columns.Count; i++)
+            if (dataGridViewStudentList.Rows.Count > 0)
             {
-                worksheet.Cells[1, i + 1] = dataGridView.Columns[i].HeaderText;
-            }
-
-            //storing EACH row and column value to excel sheet
-            for( int i = 0; i < dataGridView.Rows.Count; i++)
-            {
-                for (int j = 0; j < dataGridView.Columns.Count; j++)
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Student List Output.pdf"; bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    if (dataGridView.Rows[i].Cells[j].GetType() != typeof(DataGridViewImageCell))
+                    if (File.Exists(sfd.FileName))
                     {
-                        if (dataGridView.Columns[j].HeaderText == "Phone")
-                            worksheet.Cells[i + 2, j + 1] = "'" + dataGridView.Rows[i].Cells[j].Value.ToString();
-                        else
-                            worksheet.Cells[i + 2, j + 1] = dataGridView.Rows[i].Cells[j].Value.ToString();
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                        }
                     }
-                    else
+                    if (!fileError)
                     {
-                        // Save image from dataGridView to local
-                        ((Image)dataGridView.Rows[i].Cells[j].Value).Save(System.Windows.Forms.Application.StartupPath + @"\Download\picAvt.png");
-                        
-                        string imagString = System.Windows.Forms.Application.StartupPath + @"\Download\picAvt.png";
-                        Microsoft.Office.Interop.Excel.Range oRange = (Microsoft.Office.Interop.Excel.Range)worksheet.Cells[i + 2, j + 1];
-                        float Left = (float)((double)oRange.Left);
-                        float Top = (float)((double)oRange.Top);
-                        const float ImageSize = 80;
-                        worksheet.Shapes.AddPicture(imagString, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize, ImageSize);
-                        oRange.RowHeight = ImageSize + 2;
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(dataGridViewStudentList.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                            foreach (DataGridViewColumn column in dataGridViewStudentList.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                pdfTable.AddCell(cell);
+                            }
+                            foreach (DataGridViewRow row in dataGridViewStudentList.Rows)
+                            {
+                               
+                                string id = row.Cells[0].Value.ToString();
+                                pdfTable.AddCell(id);
+                                string Fname = row.Cells[1].Value.ToString();
+                                pdfTable.AddCell(Fname);
+                                string Lname = row.Cells[2].Value.ToString();
+                                pdfTable.AddCell(Lname);
+                                string Bdate = row.Cells[3].Value.ToString();
+                                pdfTable.AddCell(Bdate);
+                                string gender = row.Cells[4].Value.ToString();
+                                pdfTable.AddCell(gender);
+                                string phone = row.Cells[5].Value.ToString();
+                                pdfTable.AddCell(phone);
+                                string address = row.Cells[6].Value.ToString();
+                                pdfTable.AddCell(address);
+                                byte[] imageByte = (byte[])row.Cells[7].Value;
+                                iTextSharp.text.Image Image = iTextSharp.text.Image.GetInstance(imageByte);
+                                pdfTable.AddCell(Image);
+                            }
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                PdfWriter.GetInstance(pdfDoc, stream); pdfDoc.Open();
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
 
+                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex.Message);
+                        }
                     }
                 }
             }
-            worksheet.PageSetup.Orientation = Microsoft.Office.Interop.Excel.XlPageOrientation.xlLandscape;
-            if (isPrint)
-                worksheet.PrintPreview();
-        }
-
-
-        private void ButtonToEXcelFileList_Click(object sender, EventArgs e)
-        {
-            ExportDataGridViewToExcel(dataGridViewStudentList, true);
+            else
+            {
+                MessageBox.Show("No Record To Export !!!", "Info");
+            }
         }
 
         private void buttonCheckList_Click(object sender, EventArgs e)

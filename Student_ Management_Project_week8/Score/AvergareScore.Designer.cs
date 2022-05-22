@@ -41,7 +41,7 @@
             this.dataGridViewAverageScore.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewAverageScore.Name = "dataGridViewAverageScore";
             this.dataGridViewAverageScore.RowHeadersWidth = 51;
-            this.dataGridViewAverageScore.Size = new System.Drawing.Size(349, 665);
+            this.dataGridViewAverageScore.Size = new System.Drawing.Size(306, 528);
             this.dataGridViewAverageScore.TabIndex = 1;
             this.dataGridViewAverageScore.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAverageScore_CellContentClick);
             // 
@@ -49,7 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 665);
+            this.ClientSize = new System.Drawing.Size(306, 528);
             this.Controls.Add(this.dataGridViewAverageScore);
             this.Name = "AvergareScore";
             this.Text = "AvergareScore";

@@ -159,7 +159,7 @@
             this.buttonToTextFilePrint.Name = "buttonToTextFilePrint";
             this.buttonToTextFilePrint.Size = new System.Drawing.Size(150, 23);
             this.buttonToTextFilePrint.TabIndex = 11;
-            this.buttonToTextFilePrint.Text = "To Text File";
+            this.buttonToTextFilePrint.Text = "To Word File";
             this.buttonToTextFilePrint.UseVisualStyleBackColor = true;
             this.buttonToTextFilePrint.Click += new System.EventHandler(this.buttonToTextFilePrint_Click);
             // 

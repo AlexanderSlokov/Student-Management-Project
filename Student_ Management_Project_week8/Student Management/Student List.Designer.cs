@@ -124,10 +124,10 @@ namespace Student_Management_Project_week8
             this.radioButtonYes.AutoSize = true;
             this.radioButtonYes.Location = new System.Drawing.Point(3, 111);
             this.radioButtonYes.Name = "radioButtonYes";
-            this.radioButtonYes.Size = new System.Drawing.Size(152, 27);
+            this.radioButtonYes.Size = new System.Drawing.Size(158, 27);
             this.radioButtonYes.TabIndex = 8;
             this.radioButtonYes.TabStop = true;
-            this.radioButtonYes.Text = "Use Gender ";
+            this.radioButtonYes.Text = "Use Birthdate";
             this.radioButtonYes.UseVisualStyleBackColor = true;
             // 
             // ButtonToEXcelFileList
@@ -139,10 +139,10 @@ namespace Student_Management_Project_week8
             this.ButtonToEXcelFileList.Name = "ButtonToEXcelFileList";
             this.ButtonToEXcelFileList.Size = new System.Drawing.Size(157, 77);
             this.ButtonToEXcelFileList.TabIndex = 7;
-            this.ButtonToEXcelFileList.Text = "To EXcel File";
+            this.ButtonToEXcelFileList.Text = "To PDF File";
             this.ButtonToEXcelFileList.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ButtonToEXcelFileList.UseVisualStyleBackColor = true;
-            this.ButtonToEXcelFileList.Click += new System.EventHandler(this.ButtonToEXcelFileList_Click);
+            this.ButtonToEXcelFileList.Click += new System.EventHandler(this.ButtonToPdfFileList_Click);
             // 
             // buttonCheckList
             // 

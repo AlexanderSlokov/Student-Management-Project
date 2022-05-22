@@ -30,6 +30,7 @@
         {
             this.dataGridViewScore = new System.Windows.Forms.DataGridView();
             this.buttonRemoveScore = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScore)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,29 +49,44 @@
             // 
             // buttonRemoveScore
             // 
+            this.buttonRemoveScore.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRemoveScore.AutoSize = true;
             this.buttonRemoveScore.BackColor = System.Drawing.Color.Red;
             this.buttonRemoveScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRemoveScore.ForeColor = System.Drawing.Color.Cornsilk;
             this.buttonRemoveScore.Location = new System.Drawing.Point(12, 589);
             this.buttonRemoveScore.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRemoveScore.Name = "buttonRemoveScore";
-            this.buttonRemoveScore.Size = new System.Drawing.Size(845, 32);
+            this.buttonRemoveScore.Size = new System.Drawing.Size(845, 34);
             this.buttonRemoveScore.TabIndex = 3;
             this.buttonRemoveScore.Text = "Remove Score";
             this.buttonRemoveScore.UseVisualStyleBackColor = false;
             this.buttonRemoveScore.Click += new System.EventHandler(this.buttonRemoveScore_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(392, 567);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 16);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Click to load";
             // 
             // Delete_Score
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 626);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewScore);
             this.Controls.Add(this.buttonRemoveScore);
             this.Name = "Delete_Score";
             this.Text = "Delete_Score";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScore)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -78,5 +94,6 @@
 
         private System.Windows.Forms.DataGridView dataGridViewScore;
         private System.Windows.Forms.Button buttonRemoveScore;
+        private System.Windows.Forms.Label label1;
     }
 }
