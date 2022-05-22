@@ -51,6 +51,7 @@
             this.dataGridViewContact.RowHeadersWidth = 51;
             this.dataGridViewContact.Size = new System.Drawing.Size(800, 450);
             this.dataGridViewContact.TabIndex = 1;
+            this.dataGridViewContact.DoubleClick += new System.EventHandler(this.dataGridViewContact_DoubleClick);
             // 
             // Select_Contact_Form
             // 
@@ -60,6 +61,7 @@
             this.Controls.Add(this.dataGridViewContact);
             this.Name = "Select_Contact_Form";
             this.Text = "Select_Contact_Form";
+            this.Load += new System.EventHandler(this.Select_Contact_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContact)).EndInit();
             this.ResumeLayout(false);
 

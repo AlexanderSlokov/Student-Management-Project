@@ -212,7 +212,7 @@ namespace Student_Management_Project_week8.Result
 
 
 
-            int x = 2;
+           
         }
     }
 }

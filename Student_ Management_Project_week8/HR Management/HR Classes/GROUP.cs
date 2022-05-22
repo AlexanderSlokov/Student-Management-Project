@@ -9,10 +9,10 @@ namespace Student_Management_Project_week8.HR_Management
 
         public bool InsertGroup (int id, string gname, int userid)
         {
-            SqlCommand command = new SqlCommand("INSERT TO mygroup (id,name,userid) VALUES  (@id, @gn, @uid)", myDB.GetConnection);
-            command.Parameters.Add("id", SqlDbType.Int ).Value = id;
-            command.Parameters.Add("name", SqlDbType.VarChar).Value = gname;
-            command.Parameters.Add("userid", SqlDbType.Int).Value = userid;
+            SqlCommand command = new SqlCommand("INSERT INTO mygroup (id, name, userid) VALUES (@id, @gn, @uid)", myDB.GetConnection);
+            command.Parameters.Add("@id", SqlDbType.Int ).Value = id;
+            command.Parameters.Add("@gn", SqlDbType.VarChar).Value = gname;
+            command.Parameters.Add("@uid", SqlDbType.Int).Value = userid;
             myDB.openConnection();
 
             if(command.ExecuteNonQuery()== 1)

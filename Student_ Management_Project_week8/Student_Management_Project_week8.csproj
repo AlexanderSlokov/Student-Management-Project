@@ -151,10 +151,10 @@
     </Compile>
     <Compile Include="HR Management\HR Classes\CONTACT.cs" />
     <Compile Include="HR Management\HR Classes\GROUP.cs" />
-    <Compile Include="HR Management\Human Resourse Register Form.cs">
+    <Compile Include="Login management\Human Resourse Register Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HR Management\Human Resourse Register Form.Designer.cs">
+    <Compile Include="Login management\Human Resourse Register Form.Designer.cs">
       <DependentUpon>Human Resourse Register Form.cs</DependentUpon>
     </Compile>
     <Compile Include="HR Management\HumanResourceMain.cs">
@@ -293,10 +293,19 @@
     <EmbeddedResource Include="Courses\PrintCourses.resx">
       <DependentUpon>PrintCourses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HR Management\Contact Forms\Add Contact Form.resx">
+      <DependentUpon>Add Contact Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HR Management\Contact Forms\Edit Contact Form.resx">
+      <DependentUpon>Edit Contact Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HR Management\Contact Forms\Select Contact Form.resx">
       <DependentUpon>Select Contact Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HR Management\Human Resourse Register Form.resx">
+    <EmbeddedResource Include="HR Management\Contact Forms\Show Contact List Form.resx">
+      <DependentUpon>Show Contact List Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login management\Human Resourse Register Form.resx">
       <DependentUpon>Human Resourse Register Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HR Management\HumanResourceMain.resx">

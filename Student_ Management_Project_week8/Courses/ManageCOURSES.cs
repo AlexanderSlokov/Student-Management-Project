@@ -201,7 +201,7 @@ namespace Student_Management_Project_week8.Courses
             int period = (int)numericUpDownHoursNumber.Value;
             string description = textBoxDescription.Text;
             int semester = (int)comboBoxSemester.SelectedValue;
-            bool labelValid = false, periodValid = false, semesterValid = false;
+            bool labelValid = false, periodValid = false;
             //check vailidation
             if (label.Trim() == "")
             {
