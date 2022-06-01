@@ -20,6 +20,7 @@ namespace Student_Management_Project_week8.Result
         public Static_Result()
         {
             InitializeComponent();
+            InitializeChart();
         }
         STUDENT student = new STUDENT();
         SCORE score = new SCORE();
@@ -79,19 +80,7 @@ namespace Student_Management_Project_week8.Result
                     GetPassFail_Event(ref passNumber, ref failNumber);
         }
 
-        private void Static_Result_Load(object sender, EventArgs e)
-        {
-            GetPassFail_Event += FindPassAndFail;
-            OnGetPassFail();
-            labelPassNumber.Text = passNumber.ToString();
-            labelFailNumber.Text = failNumber.ToString();
-            
-            LoadPieChart(passNumber, failNumber);
-            dataGridViewAverageScore.DataSource = score.getAverageScoreByCourse();
-            dataGridViewAverageScore.Columns[0].Width = 150;
-            dataGridViewAverageScore.Columns[1].Width = 200;
-            dataGridViewAverageScore.Columns[1].DefaultCellStyle.Font = new Font(dataGridViewAverageScore.DefaultCellStyle.Font, FontStyle.Underline);
-        }
+        
 
         void LoadPieChart(int passNumber, int failNumber)
         {
@@ -124,6 +113,21 @@ namespace Student_Management_Project_week8.Result
                 pieChart.Invalidate();
                 pnlPie.Controls.Add(pieChart);
         
+        }
+
+        private void Static_Result_Load(object sender, EventArgs e)
+        {
+            GetPassFail_Event += FindPassAndFail;
+            OnGetPassFail();
+            labelPassNumber.Text = passNumber.ToString();
+            labelFailNumber.Text = failNumber.ToString();
+
+            LoadPieChart(passNumber, failNumber);
+            dataGridViewAverageScore.DataSource = score.getAverageScoreByCourse();
+            dataGridViewAverageScore.Columns[0].Width = 150;
+            dataGridViewAverageScore.Columns[1].Width = 200;
+            dataGridViewAverageScore.Columns[1].DefaultCellStyle.Font = new Font(dataGridViewAverageScore.DefaultCellStyle.Font, FontStyle.Underline);
+
         }
 
         public void FindPassAndFail(ref int numberOfPass, ref int numberOfFail)

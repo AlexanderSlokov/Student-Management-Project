@@ -116,11 +116,11 @@ namespace Student_Management_Project_week8.HR_Management
 
             command.Parameters.Add("@uid", SqlDbType.Int).Value = userid;
             command.Parameters.Add("@id", SqlDbType.Int).Value = contactid;
-            command.Parameters.Add("@fn", SqlDbType.NVarChar).Value = fname;
-            command.Parameters.Add("@ln", SqlDbType.NVarChar).Value = lname;
+            command.Parameters.Add("@fn", SqlDbType.VarChar).Value = fname;
+            command.Parameters.Add("@ln", SqlDbType.VarChar).Value = lname;
             command.Parameters.Add("@gid", SqlDbType.Int).Value = groupid;
-            command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = phone;
-            command.Parameters.Add("@mail", SqlDbType.NVarChar).Value = email;
+            command.Parameters.Add("@phone", SqlDbType.VarChar).Value = phone;
+            command.Parameters.Add("@mail", SqlDbType.VarChar).Value = email;
             command.Parameters.Add("@adrs", SqlDbType.VarChar).Value = address;
             command.Parameters.Add("@pic", SqlDbType.Image).Value = picture.ToArray();
 

@@ -29,53 +29,22 @@ namespace Student_Management_Project_week8.Score
             CreateDocument(this.dataGridViewScores);
         }
 
-        private void formPrintScore_Load(object sender, EventArgs e)
-        {
-            SqlCommand command = new SqlCommand("SELECT Id, fname, lname, bdate, gender, phone, address FROM std");
-            dataGridViewStudentList.DataSource = student.getStudent(command);
-            dataGridViewStudentList.Columns[0].Width = 50;
-            dataGridViewStudentList.Columns[0].HeaderText = "Student ID";
-            dataGridViewStudentList.Columns[1].Width = 70;
-            dataGridViewStudentList.Columns[1].HeaderText = "First Name";
-            dataGridViewStudentList.Columns[2].Width = 70;
-            dataGridViewStudentList.Columns[2].HeaderText = "Last Name";
-            dataGridViewStudentList.Columns[3].Width = 100;
-            dataGridViewStudentList.Columns[3].HeaderText = "Birthdate";
-            dataGridViewStudentList.Columns[4].Width = 50;
-            dataGridViewStudentList.Columns[4].HeaderText = "Gender";
-            dataGridViewStudentList.Columns[5].Width = 100;
-            dataGridViewStudentList.Columns[5].HeaderText = "Phone";
-            dataGridViewStudentList.Columns[6].Width = 120;
-            dataGridViewStudentList.Columns[6].HeaderText = "Address";
-            this.dataGridViewStudentList.Sort(this.dataGridViewStudentList.Columns[0], ListSortDirection.Ascending);
-            //
-            dataGridViewScores.DataSource = score.getStudentScore();
-            dataGridViewScores.Columns[0].Width = 50;
-            dataGridViewScores.Columns[0].HeaderText = "Student ID";
-            dataGridViewScores.Columns[1].Width = 120;
-            dataGridViewScores.Columns[1].HeaderText = "First Name";
-            dataGridViewScores.Columns[2].Width = 120;
-            dataGridViewScores.Columns[2].HeaderText = "Last Name";
-            dataGridViewScores.Columns[3].Width = 50;
-            dataGridViewScores.Columns[3].HeaderText = "Course ID";
-            dataGridViewScores.Columns[4].Width = 120;
-            dataGridViewScores.Columns[4].HeaderText = "Course Name";
-            dataGridViewScores.Columns[5].Width = 100;
-            dataGridViewScores.Columns[5].HeaderText = "Student Score";
-            this.dataGridViewScores.Sort(this.dataGridViewScores.Columns[0], ListSortDirection.Ascending);
-
-            //
-            listBoxCoursesList.DataSource = course.getAllCourses();
-            listBoxCoursesList.DisplayMember = "label";
-            listBoxCoursesList.ValueMember = "id";
-        }
+        
 
         private void listBoxCoursesList_Click(object sender, EventArgs e)
         {
-            dataGridViewScores.DataSource = score.getCourseScores(int.Parse(listBoxCoursesList.SelectedValue.ToString()));
-            this.dataGridViewScores.Sort(this.dataGridViewScores.Columns[0], ListSortDirection.Ascending);
-            this.dataGridViewStudentList.Sort(this.dataGridViewStudentList.Columns[0], ListSortDirection.Ascending);
+            try
+            {
+               
+                dataGridViewScores.DataSource = score.getCourseScores(Int32.Parse(listBoxCoursesList.SelectedValue.ToString()));
+                this.dataGridViewScores.Sort(this.dataGridViewScores.Columns[0], ListSortDirection.Ascending);
+                this.dataGridViewStudentList.Sort(this.dataGridViewStudentList.Columns[0], ListSortDirection.Ascending);
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
         }
 
         private void dataGridViewStudentList_Click(object sender, EventArgs e)
@@ -260,6 +229,47 @@ namespace Student_Management_Project_week8.Score
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Print_Score_Form_Load(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("SELECT ID, fname, lname, bdate, gender, phone, address FROM StudentInfo");
+            dataGridViewStudentList.DataSource = student.getStudent(command);
+            dataGridViewStudentList.Columns[0].Width = 50;
+            dataGridViewStudentList.Columns[0].HeaderText = "Student ID";
+            dataGridViewStudentList.Columns[1].Width = 70;
+            dataGridViewStudentList.Columns[1].HeaderText = "First Name";
+            dataGridViewStudentList.Columns[2].Width = 70;
+            dataGridViewStudentList.Columns[2].HeaderText = "Last Name";
+            dataGridViewStudentList.Columns[3].Width = 100;
+            dataGridViewStudentList.Columns[3].HeaderText = "Birthdate";
+            dataGridViewStudentList.Columns[4].Width = 50;
+            dataGridViewStudentList.Columns[4].HeaderText = "Gender";
+            dataGridViewStudentList.Columns[5].Width = 100;
+            dataGridViewStudentList.Columns[5].HeaderText = "Phone";
+            dataGridViewStudentList.Columns[6].Width = 120;
+            dataGridViewStudentList.Columns[6].HeaderText = "Address";
+            this.dataGridViewStudentList.Sort(this.dataGridViewStudentList.Columns[0], ListSortDirection.Ascending);
+            //
+            dataGridViewScores.DataSource = score.getStudentScore();
+            dataGridViewScores.Columns[0].Width = 50;
+            dataGridViewScores.Columns[0].HeaderText = "Student ID";
+            dataGridViewScores.Columns[1].Width = 120;
+            dataGridViewScores.Columns[1].HeaderText = "First Name";
+            dataGridViewScores.Columns[2].Width = 120;
+            dataGridViewScores.Columns[2].HeaderText = "Last Name";
+            dataGridViewScores.Columns[3].Width = 50;
+            dataGridViewScores.Columns[3].HeaderText = "Course ID";
+            dataGridViewScores.Columns[4].Width = 120;
+            dataGridViewScores.Columns[4].HeaderText = "Course Name";
+            dataGridViewScores.Columns[5].Width = 100;
+            dataGridViewScores.Columns[5].HeaderText = "Student Score";
+            this.dataGridViewScores.Sort(this.dataGridViewScores.Columns[0], ListSortDirection.Ascending);
+
+            //
+            listBoxCoursesList.DataSource = course.getAllCourses();
+            listBoxCoursesList.DisplayMember = "label";
+            listBoxCoursesList.ValueMember = "id";
         }
     }
 }

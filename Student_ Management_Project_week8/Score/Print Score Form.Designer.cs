@@ -137,7 +137,7 @@
             this.listBoxCoursesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxCoursesList.FormattingEnabled = true;
             this.listBoxCoursesList.ItemHeight = 29;
-            this.listBoxCoursesList.Location = new System.Drawing.Point(11, 67);
+            this.listBoxCoursesList.Location = new System.Drawing.Point(13, 67);
             this.listBoxCoursesList.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxCoursesList.Name = "listBoxCoursesList";
             this.listBoxCoursesList.Size = new System.Drawing.Size(239, 816);
@@ -159,6 +159,7 @@
             this.Controls.Add(this.listBoxCoursesList);
             this.Name = "Print_Score_Form";
             this.Text = "Print_Score_Form";
+            this.Load += new System.EventHandler(this.Print_Score_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudentList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScores)).EndInit();
             this.ResumeLayout(false);

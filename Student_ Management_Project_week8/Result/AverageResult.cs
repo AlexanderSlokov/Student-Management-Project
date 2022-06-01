@@ -1,16 +1,8 @@
 ﻿using Student_Management_Project_week8.Class;
 using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using Xceed.Words.NET;
-using Xceed.Document.NET;
-using Font = Xceed.Document.NET.Font;
-using Formatting = Xceed.Document.NET.Formatting;
-using System.Diagnostics;
-using Paragraph = Xceed.Document.NET.Paragraph;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Student_Management_Project_week8.Result
 {
@@ -25,185 +17,242 @@ namespace Student_Management_Project_week8.Result
         COURSES course = new COURSES();
         STUDENT student = new STUDENT();
         MY_DB mydb = new MY_DB();
+        
+        string firstname = string.Empty, lastname = string.Empty;
+        int studentID = int.MinValue;
 
-       
-       
 
-        private void bt_Cancel_Click(object sender, EventArgs e)
+        public void FindPassAndFail(ref int numberOfPass, ref int numberOfFail)
         {
-            Close();
-        }
+            string studentQuery = "SELECT ID, fname, lname FROM StudentInfo";
+            SqlCommand command = new SqlCommand(studentQuery, mydb.GetConnection);
 
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            SqlCommand command = new SqlCommand("SELECT ID, lname, fname FROM StudentInfo WHERE CONCAT(fname, ID) LIKE '%" + textBoxSearch.Text + "%' ", mydb.GetConnection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
+            // Add student query parameters
+            if (firstname != string.Empty)
+                command.Parameters.Add("@fn", SqlDbType.VarChar).Value = firstname;
+            if (lastname != string.Empty)
+                command.Parameters.Add("@ln", SqlDbType.VarChar).Value = lastname;
+            if (studentID != int.MinValue)
+                command.Parameters.Add("@id", SqlDbType.Int).Value = studentID;
+            DataTable table = student.getStudent(command);
 
-            DataTable tableCourse = new DataTable();
-            tableCourse = course.getAllCourses();
+            //add label
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT label FROM course", mydb.GetConnection);
+            DataTable labelTable = new DataTable();
+            adpt.Fill(labelTable);
 
-            //lấy khóa học theo chiều ngang
-            for (int i = 0; i < tableCourse.Rows.Count; i++)
+            for (int i = 0; i < labelTable.Rows.Count; i++)
             {
-                DataColumn CourseNamecolumn = new DataColumn();
-                CourseNamecolumn.ColumnName = tableCourse.Rows[i]["label"].ToString();
-                table.Columns.Add(CourseNamecolumn);
+                table.Columns.Add(labelTable.Rows[i][0].ToString(), typeof(int));
             }
-            //lấy điểm của từng khóa học dựa theo id của học sinh
-            DataTable tableScore = new DataTable();
-            tableScore = score.getStudentScore();
 
+            // add value to label header
             for (int i = 0; i < table.Rows.Count; i++)
             {
-                for (int c = 0; c < tableScore.Rows.Count; c++)
+                for (int j = 3; j < table.Columns.Count; j++)
                 {
-                    if (table.Rows[i]["id"].ToString() == tableScore.Rows[c]["student_id"].ToString())
+                    command = new SqlCommand("SELECT score.student_score FROM StudentInfo, score, course WHERE course.label = @label AND course.id = score.course_id AND score.student_id = @sid", mydb.GetConnection);
+
+                    command.Parameters.Add("@label", SqlDbType.VarChar).Value = table.Columns[j].ColumnName;
+                    command.Parameters.Add("@sid", SqlDbType.Int).Value = Convert.ToInt32(table.Rows[i][0]);
+
+                    adpt = new SqlDataAdapter(command);
+                    DataTable scoreTable = new DataTable();
+                    adpt.Fill(scoreTable);
+
+                    if (scoreTable.Rows.Count > 0)
                     {
-                        for (int k = 3; k < table.Columns.Count; k++)
-                        {
-                            if (table.Columns[k].ColumnName == tableScore.Rows[c]["label"].ToString())
-                            {
-                                //string coursename = table.Columns[k].ColumnName;
-                                //table.Rows[i][coursename] = tableScore.Rows[c]["student_score"].ToString();
-                                table.Rows[i][k] = tableScore.Rows[c]["student_score"].ToString();
-                                break;
-                            }
-                        }
+                        table.Rows[i][table.Columns[j].ColumnName] = Convert.ToInt32(scoreTable.Rows[0][0]);
                     }
                 }
             }
+            // add result
 
-            table.Columns.Add("AVG_Score", typeof(float));
             table.Columns.Add("Result", typeof(string));
             for (int i = 0; i < table.Rows.Count; i++)
             {
-                int count = 0;
-                float sum = 0;
-                for (int j = 3; j < table.Columns.Count - 2; j++)
+                int sum = 0;
+                for (int j = 3; j < table.Columns.Count - 1; j++)
                 {
-                    float temp;
-                    string coursename = table.Columns[j].ColumnName;
-                    if (float.TryParse(table.Rows[i][coursename].ToString(), out temp))
+                    if (!(table.Rows[i][j] is DBNull))
+                        sum += Convert.ToInt32(table.Rows[i][j]);
+                }
+
+                float avg = (float)sum / (table.Columns.Count - 4);
+
+                if (avg < 3)
+                {
+                    numberOfFail++;
+                    table.Rows[i][table.Columns.Count - 1] = "Fail";
+                }
+                else
+                {
+                    if (avg >= 3 && avg < 6.5)
                     {
-                        sum += temp;
-                        count++;
+
+                        table.Rows[i][table.Columns.Count - 1] = "Average";
                     }
+                    else if (avg >= 6.5 && avg < 8)
+                    {
+                        table.Rows[i][table.Columns.Count - 1] = "Good";
+                    }
+                    else
+                    {
+                        table.Rows[i][table.Columns.Count - 1] = "Excellent";
+                    }
+                    numberOfPass++;
                 }
-
-                float avg = sum / count;
-                Math.Round(avg, 2);
-                table.Rows[i]["AVG_Score"] = Math.Round(avg, 2);
-
-                if (avg < 5) table.Rows[i]["Result"] = "Fail";
-                if (avg >= 5 && avg <= 6.5) table.Rows[i]["Result"] = "Average";
-                if (avg > 6.5 && avg <= 7.9) table.Rows[i]["Result"] = "Goods";
-                if (avg >= 8) table.Rows[i]["Result"] = "Excellent";
-                if (count == 0) table.Rows[i]["Result"] = "Drop Out Of University!";
-                if (avg.ToString() == "NaN") table.Rows[i]["AVG_Score"] = 0;
-            }
-            dataGridViewResult.DataSource = table;
-        }
-
-        private void bt_Print_Click(object sender, EventArgs e)
-        {
-            #region one
-            string fileName = "Export_Student_Result.docx";
-            var doc = DocX.Create(fileName);
-            #endregion
-
-            #region two
-            string title = "REPORT RESULT";
-
-            Formatting titleFormat = new Formatting();
-            titleFormat.FontFamily = new Font("Tahoma");
-            titleFormat.Size = 20D;
-            titleFormat.Position = 40;
-            titleFormat.FontColor = Color.BlueViolet;
-            titleFormat.UnderlineColor = Color.Gray;
-            titleFormat.Italic = true;
-
-            //Formatting Text Paragraph  
-            Formatting textParagraphFormat = new Formatting();
-            //font family  
-            textParagraphFormat.FontFamily = new Font("Tahoma");
-            //font size  
-            textParagraphFormat.Size = 12D;
-            //Spaces between characters  
-            textParagraphFormat.Spacing = 1;
-            //Insert title  
-            Paragraph paragraphTitle = doc.InsertParagraph(title, false, titleFormat);
-            paragraphTitle.Alignment = Alignment.center;
-            //Insert text  
-            //doc.InsertParagraph(textParagraph, false, textParagraphFormat);
-            #endregion            
-            dataGridViewResult.AllowUserToAddRows = false;
-            int temp = dataGridViewResult.RowCount;
-            #region four
-            doc.InsertParagraph();
-            //Create Table
-            //var listPlayer = CreateInitData();
-            int tempq = dataGridViewResult.ColumnCount;
-            Table t = doc.AddTable(temp + 2, tempq);
-            t.Alignment = Alignment.center;
-            t.Design = TableDesign.ColorfulList;
-            // Fill cells by adding text.  
-            // First row
-            t.Rows[0].Cells[0].Paragraphs.First().Append("ID");
-            t.Rows[0].Cells[1].Paragraphs.First().Append("First Name");
-            t.Rows[0].Cells[2].Paragraphs.First().Append("Last Name");
-            temp = dataGridViewResult.RowCount;
-
-            DataTable tableCourse = new DataTable();
-            tableCourse = course.getAllCourses();
-            for (int i = 0; i < tableCourse.Rows.Count; i++)
-            {
-                t.Rows[0].Cells[i + 3].Paragraphs.First().Append(tableCourse.Rows[i]["label"].ToString());
             }
 
-            //for (int i = 3; i < tempq - 2; i++)
-            //{
-            //    t.Rows[0].Cells[i].Paragraphs.First().Append(dataGridView1.Rows[0].Cells[i].Value.ToString());
-            //    //dem2++;
-            //}
 
-            t.Rows[0].Cells[tempq - 2].Paragraphs.First().Append("Average Course");
-            t.Rows[0].Cells[tempq - 1].Paragraphs.First().Append("Result");
-            int k = 0;
 
-            for (int i = 1; i <= temp; i++)
-            {
-                for (int kt = 0; kt < tempq; kt++)
-                {
-                    t.Rows[i].Cells[kt].Paragraphs.First().Append(dataGridViewResult.Rows[k].Cells[kt].Value.ToString());
-                }
-                k++;
-            }
-            doc.InsertTable(t);
-            #endregion
-           
-            doc.Save();
-            Process.Start("WINWORD.EXE", fileName);
-           
-            Console.Read();
+           // int x = 2;
         }
 
         private void AverageResult_Load(object sender, EventArgs e)
         {
-            dataGridViewResult.DataSource = score.getAllCourseScoreAndResult();
-            dataGridViewResult.AutoSize = true;
-            dataGridViewResult.AllowUserToAddRows = false;   
-            dataGridViewResult.Columns[0].HeaderText = "Student ID";
-            dataGridViewResult.Columns[1].HeaderText = "First Name";
-            dataGridViewResult.Columns[2].HeaderText = "Last Name";
+            string query = "SELECT ID, fname, lname FROM StudentInfo";
+            FillGrid(query);
         }
 
-        private void dataGridViewResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private string FindQuery()
         {
-            txb_Id.Text = dataGridViewResult.CurrentRow.Cells[0].Value.ToString();
-            textBoxLName.Text = dataGridViewResult.CurrentRow.Cells[1].Value.ToString();
-            txtb_LName.Text = dataGridViewResult.CurrentRow.Cells[2].Value.ToString();
+            string query = "SELECT ID, fname, lname FROM StudentInfo WHERE", AND = "AND";
+
+            if (textBoxFirstName.Text != "")
+            {
+                firstname = textBoxFirstName.Text;
+                query += " fname = @fn ";
+
+            }
+            if (textBoxLastName.Text != "")
+            {
+                if (textBoxFirstName.Text != "")
+                {
+                    query += AND;
+                    lastname = textBoxLastName.Text;
+                    query += " lname = @ln ";
+                }
+                else
+                {
+                    lastname = textBoxLastName.Text;
+                    query += " lname = @ln ";
+                }
+            }
+            if (textBoxStudentID.Text != "")
+            {
+                if (textBoxFirstName.Text != "" || textBoxLastName.Text != "")
+                {
+                    query += AND;
+                    query += " id = @id ";
+                }
+                else
+                {
+                    query += " id = @id ";
+                }
+                Int32.TryParse(textBoxStudentID.Text, out studentID);
+            }
+            if (query == "SELECT ID, fname, lname FROM StudentInfo WHERE")
+            {
+                return query = "SELECT ID, fname, lname FROM StudentInfo";
+            }
+            else
+                return query;
+        }
+
+        private void buttonViewAll_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT ID, fname, lname FROM StudentInfo";
+            FillGrid(query);
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            string query = FindQuery();
+            FillGrid(query);
+        }
+
+        private void FillGrid(string studentQuery)
+        {
+
+            SqlCommand command = new SqlCommand(studentQuery, mydb.GetConnection);
+
+            // Add student query parameters
+            if (firstname != string.Empty)
+                command.Parameters.Add("@fn", SqlDbType.VarChar).Value = firstname;
+            if (lastname != string.Empty)
+                command.Parameters.Add("@ln", SqlDbType.VarChar).Value = lastname;
+            if (studentID != int.MinValue)
+                command.Parameters.Add("@id", SqlDbType.Int).Value = studentID;
+            DataTable table = student.getStudent(command);
+
+            //add label
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT label FROM course", mydb.GetConnection);
+            DataTable labelTable = new DataTable();
+            adpt.Fill(labelTable);
+
+            for (int i = 0; i < labelTable.Rows.Count; i++)
+            {
+                table.Columns.Add(labelTable.Rows[i][0].ToString(), typeof(int));
+            }
+
+            // add value to label header
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                for (int j = 3; j < table.Columns.Count; j++)
+                {
+                    command = new SqlCommand("SELECT score.student_score FROM StudentInfo, score, course WHERE course.label = @label AND course.id = score.course_id AND score.student_id = @sid", mydb.GetConnection);
+
+                    command.Parameters.Add("@label", SqlDbType.VarChar).Value = table.Columns[j].ColumnName;
+                    command.Parameters.Add("@sid", SqlDbType.Int).Value = Convert.ToInt32(table.Rows[i][0]);
+
+                    adpt = new SqlDataAdapter(command);
+                    DataTable scoreTable = new DataTable();
+                    adpt.Fill(scoreTable);
+
+                    if (scoreTable.Rows.Count > 0)
+                    {
+                        table.Rows[i][table.Columns[j].ColumnName] = Convert.ToInt32(scoreTable.Rows[0][0]);
+                    }
+                }
+            }
+            // add result
+
+            table.Columns.Add("Result", typeof(string));
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                int sum = 0;
+                for (int j = 3; j < table.Columns.Count - 1; j++)
+                {
+                    if (!(table.Rows[i][j] is DBNull))
+                        sum += Convert.ToInt32(table.Rows[i][j]);
+                }
+
+                float avg = (float)sum / (table.Columns.Count - 4);
+
+                if (avg < 3)
+                {
+                    table.Rows[i][table.Columns.Count - 1] = "Fail";
+                }
+                else if (avg >= 3 && avg < 6.5)
+                {
+                    table.Rows[i][table.Columns.Count - 1] = "Average";
+                }
+                else if (avg >= 6.5 && avg < 8)
+                {
+                    table.Rows[i][table.Columns.Count - 1] = "Good";
+                }
+                else
+                {
+                    table.Rows[i][table.Columns.Count - 1] = "Excellent";
+                }
+            }
+
+            dataGridViewResult.DataSource = table;
+            dataGridViewResult.Columns["ID"].HeaderText = "Student ID";
+            dataGridViewResult.Columns["fname"].HeaderText = "First Name";
+            dataGridViewResult.Columns["lname"].HeaderText = "Last Name";
+            dataGridViewResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }
